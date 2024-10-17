@@ -74,7 +74,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}intel-pstate-patches-all/0001-intel-pstate-patches.patch"
         "${_lucjan}le9uo-patches/0001-mm-6.11-add-le9uo.patch"
         "${_lucjan}cachyos-fixes-patches-v6/0001-cachyos-fixes-patches.patch"
-        "${_lucjan}eevdf-patches-v6/0001-sched-6.11-merge-changes-from-dev-tree.patch"
         "${_lucjan}schedutil-patches/0001-schedutil-6.11-merge-changes-from-dev-tree.patch"
 
         "${_lucjan}kbuild-patches/0001-kbuild-patches.patch"
