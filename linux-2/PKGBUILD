@@ -117,19 +117,19 @@ apply_patch() {
 
     # Cek apakah file patch ada
     if [[ ! -f "$patch_file" ]]; then
-        echo "Error: File patch '$patch_file' tidak ditemukan."
+        echo "Error: Patch File '$patch_file' not found."
         return 1
     fi
 
-    # Mencoba menerapkan patch dan menyimpan output
+    echo "Applying $patch_file"
     output=$(patch -Np1 -F2 < "$patch_file" 2>&1)
     if [[ $output == *"FAILED"* ]]; then
-      echo "Error: Gagal menerapkan patch '$patch_file'."
+      echo "Error: Failed to apply patch '$patch_file'."
       echo "Detail: $output"
       exit 1
     fi
 
-    echo "Patch '$patch_file' berhasil diterapkan."
+    echo "Patch '$patch_file' applied."
     echo "Output: $output"
     return 0
   }
