@@ -65,6 +65,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_xanmod}net/tcp/cloudflare/0001-tcp-Add-a-sysctl-to-skip-tcp-collapse-processing-whe.patch"
         "${_xanmod}pci_acso/0001-PCI-Enable-overrides-for-missing-ACS-capabilities.patch"
         "${_xanmod}userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+        "${_xanmod}zen/0001-ZEN-input-evdev-Use-call_rcu-when-detaching-client.patch"
+        "${_xanmod}zen/0002-ZEN-dm-crypt-Disable-workqueues-for-crypto-ops.patch"
         "${_lucjan}bbr3-patches/0001-tcp-bbr3-initial-import.patch"
         "${_lucjan}ntsync-patches-all/0001-ntsync-patches.patch"
         "${_lucjan}futex-patches/0001-futex-6.11-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
