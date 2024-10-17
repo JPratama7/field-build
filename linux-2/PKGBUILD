@@ -114,16 +114,15 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 apply_patch() {
+    set +e
     local src="$1"
     local output
     local exit_code
 
     echo "Applying patch: $src"
 
-    set +e
     output="$(patch -Np1 -F2 --input="../$src" -r -)"
     exit_code=$?
-    set -e
 
     echo "$output"
 
@@ -132,16 +131,19 @@ apply_patch() {
         # Check if the output contains "Skipping patch"
         if echo "$output" | grep -q "Skipping patch"; then
             echo "Patch already applied: $src"
+            set -e
             return 0
         else
             echo "Error applying patch: $src"
             echo "Patch command output:"
             echo "$output"
+            set -e
             return $exit_code
         fi
     fi
 
     echo "Patch applied successfully: $src"
+    set -e  # Restore 'set -e' for future commands
     return 0
 }
 
