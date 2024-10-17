@@ -143,7 +143,7 @@ prepare() {
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   msg2 "Applying RT patch"
-  apply_patch patch-6.11-rt7.patch
+  patch -Np1 patch-6.11-rt7.patch
 
   # Archlinux patches
   local src
@@ -152,8 +152,8 @@ prepare() {
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
     msg2 "Applying patch $src..."
-    apply_patch $src
-    # OUT="$(patch -Np1 -F2 --input="../$src" -r -)" || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
+    # apply_patch $src
+    OUT="$(patch -Np1 -F2 --input="../$src" -r -)" || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
   done
 
   # Applying configuration
