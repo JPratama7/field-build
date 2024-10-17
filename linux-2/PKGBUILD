@@ -158,7 +158,7 @@ prepare() {
 
   # Applying configuration
   msg2 "Copy configuration"
-  echo "Setting config..."
+  copy ../config .config
 
   # EROFS as module
   scripts/config --module CONFIG_EROFS_FS
