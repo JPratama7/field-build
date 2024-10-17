@@ -46,6 +46,7 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar."{xz,sign}
         "https://cdn.kernel.org/pub/linux/kernel/projects/rt/$_major/patch-$_major-rt7.patch."{xz,sign}
         "choose-gcc-optimization.sh"
+        "config"
 
         "https://github.com/firelzrd/bore-scheduler/raw/refs/heads/main/patches/stable/linux-$_major-bore/0001-linux$_major.y-bore$_bore.patch"
         
