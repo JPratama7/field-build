@@ -69,8 +69,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}ntsync-patches-all/0001-ntsync-patches.patch"
         "${_lucjan}futex-patches/0001-futex-6.11-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
 
-        "${_cachy}misc/0001-amd-hfi.patch"
-
         "${_lucjan}powercap-patches/0001-powercap-intel_rapl-Add-support-for-AMD-family-1Ah.patch"
         "${_lucjan}intel-pstate-patches-all/0001-intel-pstate-patches.patch"
         "${_lucjan}le9uo-patches/0001-mm-6.11-add-le9uo.patch"
@@ -89,6 +87,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}cpu-cachyos-patches-v6/0001-cpu-cachyos-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
+        "${_cachy}misc/0001-amd-hfi.patch"
         "${_cachy}misc/0001-acpi-call.patch"
         "${_tkg}0003-glitched-base.patch"
         )
@@ -112,25 +111,26 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 apply_patch() {
-    set +e
-    local src="$1"
-    local output
+    local patch_file="$1"
 
-    echo "Applying patch: $src"
+    # Cek apakah file patch ada
+    if [[ ! -f "$patch_file" ]]; then
+        echo "Error: File patch '$patch_file' tidak ditemukan."
+        return 1
+    fi
 
-    output=`$(patch -Np1 -F2 --input="../$src" -r -)`
-    echo "$output"
-
+    # Mencoba menerapkan patch dan menyimpan output
+    output=$(patch -Np1 -F2 < "$patch_file" 2>&1)
     if [[ $output == *"FAILED"* ]]; then
-      set -e  # Restore 'set -e' for future commands
+      echo "Error: Gagal menerapkan patch '$patch_file'."
+      echo "Detail: $output"
       exit 1
     fi
 
-
-    echo "Patch applied successfully: $src"
-    set -e  # Restore 'set -e' for future commands
+    echo "Patch '$patch_file' berhasil diterapkan."
+    echo "Output: $output"
     return 0
-}
+  }
 
 prepare() {
   mv linux-${pkgver} linux-${_major}
@@ -150,8 +150,8 @@ prepare() {
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
     msg2 "Applying patch $src..."
-    # apply_patch $src
-    OUT="$(patch -Np1 -F2 --input="../$src" -r -)" || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
+    apply_patch $src
+    # OUT="$(patch -Np1 -F2 --input="../$src" -r -)" || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
   done
 
   # Applying configuration
