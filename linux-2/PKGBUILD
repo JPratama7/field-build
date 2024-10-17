@@ -117,30 +117,17 @@ apply_patch() {
     set +e
     local src="$1"
     local output
-    local exit_code
 
     echo "Applying patch: $src"
 
-    output="$(patch -Np1 -F2 --input="../$src" -r -)"
-    exit_code=$?
-
+    output=`$(patch -Np1 -F2 --input="../$src" -r -)`
     echo "$output"
 
-    # Check the exit code of the patch command
-    if [ $exit_code -ne 0 ]; then
-        # Check if the output contains "Skipping patch"
-        if echo "$output" | grep -q "Skipping patch"; then
-            echo "Patch already applied: $src"
-            set -e
-            return 0
-        else
-            echo "Error applying patch: $src"
-            echo "Patch command output:"
-            echo "$output"
-            set -e
-            return $exit_code
-        fi
+    if [[ $output == *"FAILED"* ]]; then
+      set -e  # Restore 'set -e' for future commands
+      exit 1
     fi
+
 
     echo "Patch applied successfully: $src"
     set -e  # Restore 'set -e' for future commands
