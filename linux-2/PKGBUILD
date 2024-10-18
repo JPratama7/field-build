@@ -123,14 +123,16 @@ apply_patch() {
 
     echo "Applying $patch_file"
     output=$(patch -Np1 -F2 < "$patch_file" 2>&1)
-      echo "Detail: $output"
+    local status=$?
+    echo $status
     if [[ $output == *"FAILED"* ]]; then
       echo "Error: Failed to apply patch '$patch_file'."
       exit 1
     fi
 
     echo "Patch '$patch_file' applied."
-    echo "Output: $output"
+    echo "Output:"
+    echo $output
     return 0
   }
 
