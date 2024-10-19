@@ -4,7 +4,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 
-_microarchitecture=93
+_microarchitecture=92
 use_numa=y
 use_tracers=y
 _compiler=clang
@@ -18,7 +18,7 @@ fi
 
 pkgbase=linux-custorizer
 _major=6.11
-pkgver=${_major}.3
+pkgver=${_major}.4
 _branch=6.x
 xanmod=1
 pkgrel=${xanmod}
@@ -89,7 +89,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}cpu-cachyos-patches-v6/0001-cpu-cachyos-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
-        "${_cachy}misc/0001-amd-hfi.patch"
+        "${_lucjan}amd-patches/0001-amd-patches.patch"
+        "${_lucjan}amd-hfi-patches-all/0001-amd-hfi-patches.patch"
         "${_cachy}misc/0001-acpi-call.patch"
         "${_tkg}0003-glitched-base.patch"
         )
@@ -148,6 +149,7 @@ prepare() {
   patch -Np1 patch-6.11-rt7.patch
 
   # Archlinux patches
+  msg2 "Applying Patches"
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
