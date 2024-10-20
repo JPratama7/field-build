@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-           linux-2
+           llvm-bootstrap
           ]
       fail-fast: false
     runs-on: ubuntu-latest
