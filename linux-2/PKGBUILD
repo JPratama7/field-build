@@ -115,7 +115,8 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 apply_patch() {
     local patch_file=$(realpath "$1" 2>/dev/null)
-
+    local output
+  
     # Cek apakah file patch ada
     if [[ ! -f "$patch_file" ]]; then
         echo "Error: Patch File '$patch_file' not found."
@@ -123,7 +124,7 @@ apply_patch() {
     fi
 
     echo "Applying $patch_file"
-    output=$(patch -Np1 -F2 < "$patch_file")
+    local output = `patch -Np1 -F2 --input-file=$patch_file`
     local status=$?
     echo $status
     if [[ $output == *"FAILED"* ]]; then
@@ -157,8 +158,7 @@ prepare() {
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
     msg2 "Applying patch $src..."
-    apply_patch "../$src"
-    # OUT="$(patch -Np1 -F2 --input="../$src" -r -)" || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
+    OUT="$(patch -Np1 -F2 --input="../$src" -r -)" || echo "${OUT}" | grep "Skipping patch" -q | echo "${OUT}" || (echo "$OUT" && false);
   done
 
   # Applying configuration
