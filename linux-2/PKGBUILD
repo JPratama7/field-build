@@ -139,6 +139,7 @@ apply_patch() {
     echo $status
     if [[ $output == *"FAILED"* ]]; then
       echo "Error: Failed to apply patch '$patch_file'."
+      echo $output
       exit 1
     fi
 
