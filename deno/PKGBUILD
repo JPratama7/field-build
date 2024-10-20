@@ -20,6 +20,7 @@ sha512sums=('ddf7ebbd9944d970034e81b1ddf0a4d2b813a7c1b790dd421bead46139f7f9a4fa2
             )
 
 prepare() {
+    echo ""
 #   cd rusty_v8
 #   git config -f .gitmodules submodule.v8.shallow true
 #   git submodule update --init --recursive
