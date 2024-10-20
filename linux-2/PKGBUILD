@@ -146,8 +146,8 @@ prepare() {
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   msg2 "Applying RT patch"
-  apply_patch patch-6.11-rt7.patch
-  apply_patch patch-6.11-rt7.patch
+  apply_patch "../patch-6.11-rt7.patch"
+  apply_patch "../patch-6.11-rt7.patch"
 
   # Archlinux patches
   msg2 "Applying Patches"
