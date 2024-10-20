@@ -67,7 +67,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_xanmod}userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
         "${_xanmod}zen/0001-ZEN-input-evdev-Use-call_rcu-when-detaching-client.patch"
         "${_xanmod}xanmod/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        "${_xanmod}xanmod/0006-XANMOD-sched-Add-yield_type-sysctl-to-reduce-or-disa.patch"
         "${_xanmod}xanmod/0009-XANMOD-block-Set-rq_affinity-to-force-complete-I-O-r.patch"
         "${_xanmod}xanmod/0010-XANMOD-blk-wbt-Set-wbt_default_latency_nsec-to-2msec.patch"
         "${_xanmod}xanmod/0012-XANMOD-dcache-cache_pressure-50-decreases-the-rate-a.patch"
