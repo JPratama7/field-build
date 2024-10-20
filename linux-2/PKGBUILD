@@ -114,7 +114,7 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 apply_patch() {
-    local patch_file="$1"
+    local patch_file=$(realpath "$1" 2>/dev/null)
 
     # Cek apakah file patch ada
     if [[ ! -f "$patch_file" ]]; then
