@@ -124,7 +124,7 @@ apply_patch() {
     fi
 
     echo "Applying $patch_file"
-    local output=`patch -Np1 -F2 --input-file=$patch_file`
+    local output=`patch -Np1 -F2 --input=$patch_file`
     local status=$?
     echo $status
     if [[ $output == *"FAILED"* ]]; then
