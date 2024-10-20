@@ -80,7 +80,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}futex-patches/0001-futex-6.11-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
 
         "${_lucjan}powercap-patches/0001-powercap-intel_rapl-Add-support-for-AMD-family-1Ah.patch"
-        "${_lucjan}amd-pstate-patches-v5/0001-amd-6.11-merge-changes-from-dev-tree.patch"
         "${_lucjan}intel-pstate-patches-all/0001-intel-pstate-patches.patch"
         "${_lucjan}le9uo-patches/0001-mm-6.11-add-le9uo.patch"
         "${_lucjan}cachyos-fixes-patches-v6/0001-cachyos-fixes-patches.patch"
