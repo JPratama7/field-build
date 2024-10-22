@@ -7,15 +7,15 @@ url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 
 provides=('llvm' "llvm=${pkgver}" 'llvm-libs' 'llvm-ocaml' 'clang' "clang=${pkgver}"
-  'clang-analyzer' 'clang-tools-extra' 'polly' 'openmp'
+  'clang-analyzer' 'clang-tools-extra' 'polly' 'openmp' 'compiler-rt'
   'lld')
 
 replaces=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer'
-  'clang-tools-extra' 'polly' 'openmp' 'lld'
+  'clang-tools-extra' 'polly' 'openmp' 'lld' 'compiler-rt'
 )
 
 conflicts=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer'
-  'clang-tools-extra' 'polly' 'openmp' 'lld'
+  'clang-tools-extra' 'polly' 'openmp' 'lld' 'compiler-rt'
   'llvm-git' 'llvm-libs-git' 'llvm-ocaml-git'
 )
 
