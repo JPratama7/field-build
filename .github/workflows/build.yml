@@ -96,9 +96,9 @@ jobs:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-funified-lto"
-          cxxflags: "-funified-lto"
-          rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
+          # cflags: "-funified-lto"
+          # cxxflags: "-funified-lto"
+          # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
         # uses: JPratama7/pkgbuild-action@test-toolchain
         # with:
         #   namcapDisable: true
