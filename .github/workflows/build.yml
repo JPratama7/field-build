@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-           geany-git
+           jamesdsp
           ]
       fail-fast: false
     runs-on: ubuntu-latest
