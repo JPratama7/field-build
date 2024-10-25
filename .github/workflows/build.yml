@@ -34,20 +34,20 @@ jobs:
     strategy:
       matrix:
         build: [
-           llvm-bootstrap
+           geany-git
           ]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v4.1
-        with:
-          remove-android: 'true'
-          remove-dotnet: 'true'
-          remove-haskell: 'true'
-          remove-cached-tools: 'true'
-          remove-large-packages: 'true'
-          remove-codeql: 'true'
+      # - name: Maximize build space
+      #   uses: AdityaGarg8/remove-unwanted-software@v4.1
+      #   with:
+      #     remove-android: 'true'
+      #     remove-dotnet: 'true'
+      #     remove-haskell: 'true'
+      #     remove-cached-tools: 'true'
+      #     remove-large-packages: 'true'
+      #     remove-codeql: 'true'
       - name: Build
         run: |
           echo "Free space:"
@@ -91,7 +91,7 @@ jobs:
       #     cd ${{ matrix.build }} && sed -i 's/+clang//g' PKGBUILD
       # - run: ls -alR
       - id: makepkg
-        uses: JPratama7/pkgbuild-action@clanged
+        uses: JPratama7/pkgbuild-action@edged
         with:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
