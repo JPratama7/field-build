@@ -251,11 +251,6 @@ prepare() {
   msg2 "Set HOSTNAME"
   scripts/config --set-val CONFIG_DEFAULT_HOSTNAME "Lilium"
 
-  ## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
-  msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
-  scripts/config --set-str CONFIG_SECURITY_TOMOYO_POLICY_LOADER      "/usr/bin/tomoyo-init"
-  scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/systemd/systemd"
-
   msg2 "AMD PSTATE"
   scripts/config  -e CONFIG_X86_AMD_PSTATE
 
@@ -328,6 +323,11 @@ prepare() {
                  -e CONFIG_NTFS3_64BIT_CLUSTER \
                  -e CONFIG_NTFS3_LZX_XPRESS \
                  -e CONFIG_NTFS3_FS_POSIX_ACL
+
+  ## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
+  msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
+  scripts/config --set-str CONFIG_SECURITY_TOMOYO_POLICY_LOADER      "/usr/bin/tomoyo-init"
+  scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/systemd/systemd"
 
   # Let's user choose microarchitecture optimization in GCC
   # Use default microarchitecture only if we have not choosen another microarchitecture
