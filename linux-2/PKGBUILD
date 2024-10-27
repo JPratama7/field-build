@@ -156,8 +156,12 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
+  echo $CFLAGS
+  echo $CXXFLAGS
+  echo $LDFLAGS
+  echo $RUSTFLAGS
+
   msg2 "Applying RT patch"
-  apply_patch "../patch-6.11-rt7.patch"
   apply_patch "../patch-6.11-rt7.patch"
 
   # Archlinux patches
