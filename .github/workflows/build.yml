@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-           llvm-bootstrap
+           linux-2
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -94,6 +94,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@edged
         with:
           clanged: "y"
+          # clangedpflags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
