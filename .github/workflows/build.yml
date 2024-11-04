@@ -99,7 +99,7 @@ jobs:
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
           # cflags: "-funified-lto"
-          # cxxflags: "-funified-lto"
+          cxxflags: "-funified-lto  -std=c++20"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
         # uses: JPratama7/pkgbuild-action@test-toolchain
         # with:
