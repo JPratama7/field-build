@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-           llvm-bootstrap
+           beekeeper-studio
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -91,9 +91,9 @@ jobs:
       #     cd ${{ matrix.build }} && sed -i 's/+clang//g' PKGBUILD
       # - run: ls -alR
       - id: makepkg
-        uses: JPratama7/pkgbuild-action@llvm-bootstrap
+        uses: JPratama7/pkgbuild-action@edged
         with:
-          clanged: "y"
+          # clanged: "y"
           # clangedpflags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
