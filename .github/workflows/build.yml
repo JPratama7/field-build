@@ -93,7 +93,7 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@edged
         with:
-          # clanged: "y"
+          clanged: "y"
           # clangedpflags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
