@@ -70,6 +70,11 @@ prepare() {
     exit 1
   )
 
+  pushd polly/lib/External
+  chmod +x update-isl.sh
+  update-isl.sh isl-0.27
+  popd
+
   # Attempt to convert script to Python 3
   2to3 -wn --no-diffs \
     clang-tools-extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
@@ -103,7 +108,6 @@ build() {
     -DLLVM_ENABLE_FFI=ON
     -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;compiler-rt;polly"
     -DLLVM_ENABLE_RUNTIMES="openmp"
-    -DPOLLY_BUNDLED_ISL=OFF
     -DLIBOMP_INSTALL_ALIASES=OFF
     -DCLANG_LINK_CLANG_DYLIB=ON
     -DCLANG_DEFAULT_PIE_ON_LINUX=ON
