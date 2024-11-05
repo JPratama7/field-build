@@ -94,13 +94,13 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          clangedpflags: "y"
+          # clangedpflags: "y"
           officialRepo: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-Xclang -load -Xclang LLVMPolly.so"
-          cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
+          # cflags: "-Xclang -load -Xclang LLVMPolly.so"
+          # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
         # uses: JPratama7/pkgbuild-action@test-toolchain
         # with:
