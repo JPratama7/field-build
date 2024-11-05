@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-           beekeeper-studio
+           llvm-bootstrap
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -91,15 +91,15 @@ jobs:
       #     cd ${{ matrix.build }} && sed -i 's/+clang//g' PKGBUILD
       # - run: ls -alR
       - id: makepkg
-        uses: JPratama7/pkgbuild-action@edged
+        uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          # clangedpflags: "y"
+          clangedpflags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          # cflags: "-funified-lto"
-          cxxflags: "-funified-lto  -std=c++20"
+          cflags: "-funified-lto -Xclang='-load LLVMPolly.so'"
+          cxxflags: "-funified-lto -Xclang='-load LLVMPolly.so' -std=c++20"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
         # uses: JPratama7/pkgbuild-action@test-toolchain
         # with:
