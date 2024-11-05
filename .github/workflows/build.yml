@@ -99,8 +99,8 @@ jobs:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-funified-lto -Xclang -load -Xclang LLVMPolly.so"
-          cxxflags: "-funified-lto -Xclang -load -Xclang LLVMPolly.so -std=c++20"
+          cflags: "-Xclang -load -Xclang LLVMPolly.so"
+          cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
         # uses: JPratama7/pkgbuild-action@test-toolchain
         # with:
