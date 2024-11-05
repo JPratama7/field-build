@@ -6,26 +6,24 @@ arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 
-provides=('llvm' "llvm=${pkgver}" 'llvm-libs' 'llvm-ocaml' 'clang' "clang=${pkgver}"
+provides=('llvm' "llvm=${pkgver}" 'llvm-libs' 'clang' "clang=${pkgver}"
   'clang-analyzer' 'clang-tools-extra' 'polly' 'openmp' 'compiler-rt'
   'lld')
 
-replaces=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer'
+replaces=('llvm' 'llvm-libs' 'clang' 'clang-analyzer'
   'clang-tools-extra' 'polly' 'openmp' 'lld' 'compiler-rt'
 )
 
-conflicts=('llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer'
+conflicts=('llvm' 'llvm-libs' 'clang' 'clang-analyzer'
   'clang-tools-extra' 'polly' 'openmp' 'lld' 'compiler-rt'
-  'llvm-git' 'llvm-libs-git' 'llvm-ocaml-git'
+  'llvm-git' 'llvm-libs-git'
 )
 
 depends=('libelf' 'libffi' 'libedit' 'libxml2' 'ncurses' 'compiler-rt')
-_ocaml_ver=4.14.0
 makedepends=(
   'git' 'ninja' 'cmake' 'llvm' 'clang'
-  "ocaml>=${_ocaml_ver}" 'ocaml-ctypes' 'ocaml-findlib'
   'python-setuptools' 'python-psutil' 'python-sphinx'
-  'python-recommonmark' 'ocaml-stdlib-shims' 'mimalloc' 'libc++' 'libc++abi'
+  'python-recommonmark' 'mimalloc' 'libc++' 'libc++abi'
 )
 makedepends_x86_64=('lib32-gcc-libs')
 _commit=8dfdcc7b7bf66834a761bd8de445840ef68e4d1a
@@ -93,6 +91,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DLLVM_BINUTILS_INCDIR=/usr/include
     -DLLVM_BUILD_RUNTIME=ON
+    -DLLVM_ENABLE_BINDINGS=OFF
     -DLLVM_ENABLE_PIC=ON
     -DLLVM_HOST_TRIPLE="${CHOST:?}"
     -DLLVM_ENABLE_CURL=ON
