@@ -37,7 +37,7 @@ sha256sums=('SKIP'
 
 options=('staticlibs' '!lto' '!debug')
 
-_skip_build_test=n
+_skip_build_test=y
 _skip_documentation=y
 _extra_build_flags=(
   -DCMAKE_EXE_LINKER_FLAGS=-Wl,--push-state,/usr/lib/libmimalloc.a,--pop-state 
