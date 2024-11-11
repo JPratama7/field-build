@@ -103,11 +103,15 @@ jobs:
         with:
           clanged: "y"
           clangedpflags: "y"
-          officialRepo: "y"
+          # officialRepo: "y"
           gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
+          # cflags: "-funified-lto"
+          # cxxflags: "-funified-lto"
+          ldflags: "-Wl,-z,nostart-stop-gc"
+          rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
           # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
