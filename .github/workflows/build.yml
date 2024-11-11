@@ -101,9 +101,9 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          # clanged: "y"
-          # clangedpflags: "y"
-          # officialRepo: "y"
+          clanged: "y"
+          clangedpflags: "y"
+          officialRepo: "y"
           gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
