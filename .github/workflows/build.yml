@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          pypy3
+          pritunl-client-electron-git 
           ]
       fail-fast: false
     runs-on: ubuntu-latest
