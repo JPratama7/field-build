@@ -9,7 +9,6 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'ncurses')
 makedepends=('pypy' 'sqlite' 'tk')
 optdepends=('sqlite: sqlite module'
             'tk: tk module')
-options=(!buildflags)
 license=('MIT')
 source=("https://downloads.python.org/pypy/pypy${_pyversion}-v${pkgver}-src.tar.bz2")
 sha512sums=('0b85a6a3caed71faef013a0dcef4d67199464454f8af0018dea4570ea644a2d43926e8a988bed7838d1e7a6449e3c1fec97aa60afab8652277f1f2677dd62031')
