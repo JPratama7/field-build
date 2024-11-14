@@ -80,7 +80,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
 
         "${_lucjan}powercap-patches/0001-powercap-intel_rapl-Add-support-for-AMD-family-1Ah.patch"
         "${_lucjan}intel-pstate-patches-all/0001-intel-pstate-patches.patch"
-        "${_lucjan}cachyos-fixes-patches-v28/0001-cachyos-fixes-patches.patch"
+        "${_lucjan}cachyos-fixes-patches-v27/0001-cachyos-fixes-patches.patch"
 
         "${_lucjan}kbuild-patches/0001-kbuild-patches.patch"
         "${_lucjan}uksmd-patches-v2/0001-uksmd-patches.patch"
