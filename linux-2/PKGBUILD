@@ -94,7 +94,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}perf-patches-v3-all/0001-perf-patches.patch"
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
         "${_lucjan}cpu-cachyos-patches-v6/0001-cpu-cachyos-patches.patch"
-        "${_lucjan}x86-patches-v3/0001-x86-patches.patch"
+        "${_lucjan}x86-patches-v3/0001-x86-uaccess-Avoid-barrier_nospec-in-64-bit-copy_from.patch"
         "${_lucjan}lrng-patches-all/0001-lrng-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
