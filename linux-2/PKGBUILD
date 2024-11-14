@@ -91,7 +91,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}zstd-cachyos-patches/0001-zstd-cachyos-patches.patch"
 
         "${_lucjan}openvpn-patches-v2-all/0001-openvpn-patches.patch"
-        "${_lucjan}perf-patches/0001-perf-6.11-merge-changes-from-dev-tree.patch"
+        "${_lucjan}perf-patches-v3-all/0001-perf-patches.patch"
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
         "${_lucjan}cpu-cachyos-patches-v6/0001-cpu-cachyos-patches.patch"
         "${_lucjan}x86-patches/0001-x86-patches.patch"
@@ -99,7 +99,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
 
         "${_tkg}0013-optimize_harder_O3.patch"
         "${_lucjan}amd-patches/0001-amd-patches.patch"
-        "${_lucjan}amd-hfi-patches-v4-all/0001-amd-hfi-patches.patch"
+        "${_lucjan}amd-hfi-patches-v6-all/0001-amd-hfi-patches.patch"
         "${_cachy}misc/0001-acpi-call.patch"
         "${_tkg}0003-glitched-base.patch"
         )
