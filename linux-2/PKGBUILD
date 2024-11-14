@@ -95,7 +95,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}lrng-patches-all/0001-lrng-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
-        "${_lucjan}amd-patches/0001-amd-patches.patch"
         "${_lucjan}amd-hfi-patches-v6-all/0001-amd-hfi-patches.patch"
         "${_cachy}misc/0001-acpi-call.patch"
         "${_tkg}0003-glitched-base.patch"
