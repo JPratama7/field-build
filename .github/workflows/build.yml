@@ -94,7 +94,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          clangedpflags: "y"
+          # clangedpflags: "y"
           # officialRepo: "y"
           gccPFlags: "y"
           namcapDisable: true

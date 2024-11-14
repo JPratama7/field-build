@@ -17,7 +17,7 @@ fi
 
 pkgbase=linux-lilium
 _major=6.11
-pkgver=${_major}.5
+pkgver=${_major}.7
 _branch=6.x
 xanmod=1
 pkgrel=${xanmod}
@@ -30,7 +30,7 @@ _tkg="https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-t
 _xanmod="https://gitlab.com/xanmod/linux-patches/-/raw/master/linux-6.11.y-xanmod/"
 _commit_ck=2870d6ac146aa658af60bb18a9c7503efe5992d4
 
-_bore=5.7.1
+_bore=5.7.3
 
 license=(GPL2)
 makedepends=(
@@ -81,7 +81,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}powercap-patches/0001-powercap-intel_rapl-Add-support-for-AMD-family-1Ah.patch"
         "${_lucjan}intel-pstate-patches-all/0001-intel-pstate-patches.patch"
         "${_lucjan}le9uo-patches/0001-mm-6.11-add-le9uo.patch"
-        "${_lucjan}cachyos-fixes-patches-v17/0001-cachyos-fixes-patches.patch"
+        "${_lucjan}cachyos-fixes-patches-v19/0001-cachyos-fixes-patches.patch"
 
         "${_lucjan}kbuild-patches/0001-kbuild-patches.patch"
         "${_lucjan}mm-cachyos-patches-v2/0001-mm-cachyos-patches.patch"
@@ -94,12 +94,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}perf-patches/0001-perf-6.11-merge-changes-from-dev-tree.patch"
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
         "${_lucjan}cpu-cachyos-patches-v6/0001-cpu-cachyos-patches.patch"
-        "${_lucjan}x86-patches-v2/0001-x86-patches.patch"
+        "${_lucjan}x86-patches/0001-x86-patches.patch"
         "${_lucjan}lrng-patches-all/0001-lrng-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
         "${_lucjan}amd-patches/0001-amd-patches.patch"
-        "${_lucjan}amd-hfi-patches-v5-all/0001-amd-hfi-patches.patch"
+        "${_lucjan}amd-hfi-patches-v4-all/0001-amd-hfi-patches.patch"
         "${_cachy}misc/0001-acpi-call.patch"
         "${_tkg}0003-glitched-base.patch"
         )
@@ -156,12 +156,8 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
-  echo $CFLAGS
-  echo $CXXFLAGS
-  echo $LDFLAGS
-  echo $RUSTFLAGS
-
   msg2 "Applying RT patch"
+  apply_patch "../patch-6.11-rt7.patch"
   apply_patch "../patch-6.11-rt7.patch"
 
   # Archlinux patches
@@ -255,6 +251,11 @@ prepare() {
   msg2 "Set HOSTNAME"
   scripts/config --set-val CONFIG_DEFAULT_HOSTNAME "Lilium"
 
+  ## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
+  msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
+  scripts/config --set-str CONFIG_SECURITY_TOMOYO_POLICY_LOADER      "/usr/bin/tomoyo-init"
+  scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/systemd/systemd"
+
   msg2 "AMD PSTATE"
   scripts/config  -e CONFIG_X86_AMD_PSTATE
 
@@ -328,15 +329,10 @@ prepare() {
                  -e CONFIG_NTFS3_LZX_XPRESS \
                  -e CONFIG_NTFS3_FS_POSIX_ACL
 
-  ## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
-  msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
-  scripts/config --set-str CONFIG_SECURITY_TOMOYO_POLICY_LOADER      "/usr/bin/tomoyo-init"
-  scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/systemd/systemd"
-
   # Let's user choose microarchitecture optimization in GCC
   # Use default microarchitecture only if we have not choosen another microarchitecture
   if [ "$_microarchitecture" -ne "0" ]; then
-    ../choose-gcc-optimization.sh $_microarchitecture
+    "$srcdir"/choose-gcc-optimization.sh $_microarchitecture
   fi
 
   # This is intended for the people that want to build this package with their own config
