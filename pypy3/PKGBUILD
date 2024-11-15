@@ -14,14 +14,6 @@ source=("https://downloads.python.org/pypy/pypy${_pyversion}-v${pkgver}-src.tar.
 sha512sums=('0b85a6a3caed71faef013a0dcef4d67199464454f8af0018dea4570ea644a2d43926e8a988bed7838d1e7a6449e3c1fec97aa60afab8652277f1f2677dd62031')
 
 build() {
-  echo $PACKAGER
-
-  echo "aaaaaaaaaaaaaaaaaa"
-  echo $CC
-  echo $CFLAGS
-  echo $CXXFLAGS
-  echo $LDFLAGS
-
   cd pypy${_pyversion}-v${pkgver}-src/pypy/goal
 
   # For some reason, PyPy wants to use their vendored dependencies when detecting linux.
