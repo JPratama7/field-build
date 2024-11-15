@@ -96,7 +96,7 @@ jobs:
           clanged: "y"
           # clangedpflags: "y"
           # officialRepo: "y"
-          gccPFlags: "y"
+          # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
