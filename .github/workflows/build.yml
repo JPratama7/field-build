@@ -95,7 +95,8 @@ jobs:
         with:
           clanged: "y"
           clangedpflags: "y"
-          # clangedPolly: "y"
+          clangedPolly: "y"
+          bootstrap: "y"
           # officialRepo: "y"
           # gccPFlags: "y"
           namcapDisable: true
