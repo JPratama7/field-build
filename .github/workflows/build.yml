@@ -34,20 +34,20 @@ jobs:
     strategy:
       matrix:
         build: [
-          llvm-all, llvm-runtime
+          linux-2
           ]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
-      # - name: Maximize build space
-      #   uses: AdityaGarg8/remove-unwanted-software@v4.1
-      #   with:
-      #     remove-android: 'true'
-      #     remove-dotnet: 'true'
-      #     remove-haskell: 'true'
-      #     remove-cached-tools: 'true'
-      #     remove-large-packages: 'true'
-      #     remove-codeql: 'true'
+      - name: Maximize build space
+        uses: AdityaGarg8/remove-unwanted-software@v4.1
+        with:
+          remove-android: 'true'
+          remove-dotnet: 'true'
+          remove-haskell: 'true'
+          remove-cached-tools: 'true'
+          remove-large-packages: 'true'
+          remove-codeql: 'true'
       # - name: Build
       #   run: |
       #     echo "Free space:"
@@ -55,9 +55,9 @@ jobs:
 
       - name: Clone
         uses: actions/checkout@v3
-        with:
+        # with:
           # repository: h0tc0d3/arch-packages
-          repository: JPratama7/arch-builder
+          # repository: JPratama7/arch-builder
           # repository: sarcasticadmin/empty-repo
           # repository: archlinux/svntogit-packages
           # ref: packages/${{ matrix.build }}
@@ -102,8 +102,8 @@ jobs:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          # cflags: "-funified-lto"
-          # cxxflags: "-funified-lto"
+          cflags: "-mllvm --dse-optimize-memoryssa -mllvm --polly-on-isl-error-abort -mllvm --polly-enable-optree"
+          cxxflags: "-mllvm --dse-optimize-memoryssa -mllvm --polly-on-isl-error-abort -mllvm --polly-enable-optree"
           ldflags: "-Wl,-z,nostart-stop-gc"
           rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
