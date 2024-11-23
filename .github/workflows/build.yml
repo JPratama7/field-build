@@ -102,8 +102,8 @@ jobs:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-mllvm --dse-optimize-memoryssa -mllvm --polly-on-isl-error-abort -mllvm --polly-enable-optree"
-          cxxflags: "-mllvm --dse-optimize-memoryssa -mllvm --polly-on-isl-error-abort -mllvm --polly-enable-optree"
+          cflags: "-mllvm --dse-optimize-memoryssa -mllvm --polly-on-isl-error-abort -mllvm --polly-enable-optree -mllvm --gc-empty-basic-blocks"
+          cxxflags: "-mllvm --dse-optimize-memoryssa -mllvm --polly-on-isl-error-abort -mllvm --polly-enable-optree -mllvm --gc-empty-basic-blocks"
           ldflags: "-Wl,-z,nostart-stop-gc"
           rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
