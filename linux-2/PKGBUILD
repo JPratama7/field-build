@@ -58,7 +58,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_xanmod}clearlinux/0003-locking-rwsem-spin-faster.patch"
         "${_xanmod}clearlinux/0004-drivers-initialize-ata-before-graphics.patch"
         "${_xanmod}net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        "${_xanmod}net/netfilter/0001-netfilter-Add-netfilter-nf_tables-fullcone-support.patch"
         "${_xanmod}net/netfilter/0002-netfilter-add-xt_FLOWOFFLOAD-target.patch"
         "${_xanmod}net/tcp/cloudflare/0001-tcp-Add-a-sysctl-to-skip-tcp-collapse-processing-whe.patch"
         "${_xanmod}pci_acso/0001-PCI-Enable-overrides-for-missing-ACS-capabilities.patch"
