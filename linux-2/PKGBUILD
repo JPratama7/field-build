@@ -43,7 +43,6 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar."{xz,sign}
-        "https://cdn.kernel.org/pub/linux/kernel/projects/rt/$_major/patch-$_major-rt7.patch."{xz,sign}
         "choose-gcc-optimization.sh"
         "config"
 
@@ -153,9 +152,6 @@ prepare() {
   msg2 "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux-lilium}" > localversion.20-pkgname
-
-  msg2 "Applying RT patch"
-  apply_patch "../patch-6.11-rt7.patch"
 
   # Archlinux patches
   msg2 "Applying Patches"
