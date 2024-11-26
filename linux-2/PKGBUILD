@@ -81,7 +81,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}cachyos-fixes-patches-v6/0001-cachyos-fixes-patches.patch"
         "${_lucjan}cpuidle-patches/0001-cpuidle-patches.patch"
         "${_lucjan}cpufreq-ext-patches/0001-cpufreq-ext-patches.patch"
-        "${_lucjan}ntsync-patches-all/0001-ntsync-patches.patch"
         "${_lucjan}zram-patches/0001-zram-6.12-merge-changes-from-dev-tree.patch"
 
         "${_lucjan}kbuild-cachyos-patches/0001-Cachy-Allow-O3.patch"
