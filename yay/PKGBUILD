@@ -27,6 +27,10 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_ENABLED=1
 
+  echo $CGO_CFLAGS
+  echo $CGO_CXXFLAGS
+  echo $CGO_LDFLAGS
+
   cd "$srcdir/$pkgname-$pkgver"
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
 }
