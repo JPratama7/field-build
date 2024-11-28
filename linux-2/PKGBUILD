@@ -329,12 +329,15 @@ prepare() {
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
+
   if [ "$_makenconfig" = "y" ]; then
     make ${_compiler_flags} nconfig
   fi
 
   # save configuration for later reuse
   cat .config > "${SRCDEST}/config.last"
+  cat .config
+
 }
 
 build() {
