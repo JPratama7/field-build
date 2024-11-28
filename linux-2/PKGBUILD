@@ -148,7 +148,7 @@ prepare() {
 
   msg2 "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-lilium}" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # Archlinux patches
   msg2 "Applying Patches"
@@ -236,7 +236,7 @@ prepare() {
   fi
 
   msg2 "Set HOSTNAME"
-  scripts/config --set-val CONFIG_DEFAULT_HOSTNAME "Lilium"
+  scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "Lilium"
 
   ## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
   msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
@@ -362,6 +362,7 @@ _package() {
   )
 
   cd linux-${_major}
+
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   msg2 "Installing boot image..."
@@ -370,13 +371,13 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  msg2 "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  ZSTD_CLEVEL=19 make "${BUILD_FLAGS[@]}" INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+      DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
-  # remove build link
+  # remove build links
   rm "$modulesdir"/build
 }
 
@@ -389,16 +390,19 @@ _package-headers() {
 
   msg2 "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
+      localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
+      install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -419,15 +423,15 @@ _package-headers() {
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  echo "Installing KConfig files..."
+  msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg2 "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
-    [[ $arch = */x86/ ]] && continue
-    echo "Removing $(basename "$arch")"
-    rm -r "$arch"
+      [[ $arch = */x86/ ]] && continue
+      msg2 "Removing $(basename "$arch")"
+      rm -r "$arch"
   done
 
   msg2 "Removing documentation..."
@@ -442,16 +446,16 @@ _package-headers() {
   msg2 "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -Sib "$file")" in
-      application/x-sharedlib\;*)      # Libraries (.so)
-        strip -v $STRIP_SHARED "$file" ;;
-      application/x-archive\;*)        # Libraries (.a)
-        strip -v $STRIP_STATIC "$file" ;;
-      application/x-executable\;*)     # Binaries
-        strip -v $STRIP_BINARIES "$file" ;;
-      application/x-pie-executable\;*) # Relocatable binaries
-        strip -v $STRIP_SHARED "$file" ;;
-    esac
+      case "$(file -Sib "$file")" in
+          application/x-sharedlib\;*)      # Libraries (.so)
+              strip -v $STRIP_SHARED "$file" ;;
+          application/x-archive\;*)        # Libraries (.a)
+              strip -v $STRIP_STATIC "$file" ;;
+          application/x-executable\;*)     # Binaries
+              strip -v $STRIP_BINARIES "$file" ;;
+          application/x-pie-executable\;*) # Relocatable binaries
+              strip -v $STRIP_SHARED "$file" ;;
+      esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
   msg2 "Stripping vmlinux..."
