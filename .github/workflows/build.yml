@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          yay
+          linux-2
           ]
       fail-fast: false
     runs-on: ubuntu-latest
