@@ -152,6 +152,9 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
+  cat localversion.10-pkgrel
+  cat localversion.20-pkgname
+
   # Archlinux patches
   msg2 "Applying Patches"
   local src
