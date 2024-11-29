@@ -88,11 +88,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}v4l2loopback-patches/0001-media-v4l2-core-add-v4l2loopback-driver.patch"
         "${_lucjan}zstd-cachyos-patches/0001-zstd-cachyos-patches.patch"
 
-        "${_lucjan}crypto-next-patches-v2-all/0001-crypto-next-patches.patch"
+        "${_lucjan}crypto-patches-all/0001-crypto-patches.patch"
 
         "${_lucjan}perf-patches-v2-all/0001-perf-patches.patch"
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
-        # "${_lucjan}amd-pstate-patches-v2-all/0001-amd-pstate-patches.patch"
+        "${_lucjan}amd-pstate-patches-v2-all/0001-amd-pstate-patches.patch"
         "${_lucjan}cpu-cachyos-patches/0001-cpu-cachyos-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
