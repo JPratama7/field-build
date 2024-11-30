@@ -39,7 +39,7 @@ if [ "${_compiler}" = "clang" ]; then
   makedepends+=(clang llvm python)
 fi
 options=('!strip')
-_srcname="linux-${pkgver}-lilium${xanmod}"
+_srcname="linux-${pkgver}-lilium${pkgrel}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar."{xz,sign}
         "choose-gcc-optimization.sh"
@@ -170,10 +170,10 @@ prepare() {
   # Applying configuration
   msg2 "Copy configuration"
   cp ../config .config
-
-  ### Setting config
-  msg2 "Setting config..."
+  
+  msg2 "make ${_compiler_flags} olddefconfig"
   make ${_compiler_flags} olddefconfig
+  #diff -u CONFIGS/xanmod/gcc/${_config} .config || :
 
   # EROFS as module
   scripts/config --module CONFIG_EROFS_FS
@@ -331,7 +331,6 @@ prepare() {
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
-
 
   if [ "$_makenconfig" = "y" ]; then
     make ${_compiler_flags} nconfig
