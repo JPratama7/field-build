@@ -152,8 +152,10 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  cat localversion.10-pkgrel
-  cat localversion.20-pkgname
+  echo "===================================="
+  printf "$(cat localversion.10-pkgrel)\n"
+  printf "$(cat localversion.20-pkgname)\n"
+  echo "===================================="
 
   # Archlinux patches
   msg2 "Applying Patches"
@@ -379,7 +381,7 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  msg2 "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   ZSTD_CLEVEL=19 make "${BUILD_FLAGS[@]}" INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
