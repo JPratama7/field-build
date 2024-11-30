@@ -69,6 +69,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_xanmod}xanmod/0015-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
         "${_xanmod}xanmod/0016-XANMOD-cpufreq-tunes-ondemand-and-conservative-gover.patch"
         "${_xanmod}xanmod/0015-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
+        "${_xanmod}zen/0001-ZEN-input-evdev-Use-call_rcu-when-detaching-client.patch"
         "${_xanmod}zen/0002-ZEN-dm-crypt-Disable-workqueues-for-crypto-ops.patch"
         
         "${_lucjan}bbr3-patches/0001-tcp-bbr3-initial-import.patch"
@@ -93,7 +94,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}perf-patches-v2-all/0001-perf-patches.patch"
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
         "${_lucjan}amd-pstate-patches-v2-all/0001-amd-pstate-patches.patch"
-        "${_lucjan}cpu-cachyos-patches/0001-cpu-cachyos-patches.patch"
+        "${_lucjan}cpu-cachyos-patches-v2/0001-cpu-cachyos-patches.patch"
 
         "${_tkg}0013-optimize_harder_O3.patch"
         "${_cachy}misc/0001-acpi-call.patch"
