@@ -29,7 +29,7 @@ _tkg="https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-t
 _xanmod="https://gitlab.com/xanmod/linux-patches/-/raw/master/linux-6.11.y-xanmod/"
 _commit_ck=2870d6ac146aa658af60bb18a9c7503efe5992d4
 
-_bore=5.7.3
+_bore=5.7.4
 
 license=(GPL2)
 makedepends=(
