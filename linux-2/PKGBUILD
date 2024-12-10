@@ -16,7 +16,7 @@ fi
 
 pkgbase=linux-lilium
 _major=6.12
-pkgver=${_major}.3
+pkgver=${_major}.4
 _branch=6.x
 pkgrel=8
 pkgdesc='Linux Kernel - Current Stable (CURRENT) with Custom Patches'
