@@ -97,7 +97,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
 
         "${_tkg}0013-optimize_harder_O3.patch"
         "${_cachy}misc/0001-acpi-call.patch"
-        "${_tkg}0003-glitched-base.patch"
         )
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
