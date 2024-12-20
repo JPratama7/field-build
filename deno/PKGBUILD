@@ -51,7 +51,7 @@ build() {
   export GN=/usr/bin/gn NINJA=/usr/bin/ninja
   export EXTRA_GN_ARGS="${_extra_gn_args[@]}"
 
-  RUST_BACKTRACE=1 cargo build --release
+  cargo build --release
 }
 
 check() {
