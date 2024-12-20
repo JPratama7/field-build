@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          linux-2
+          deno
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -95,9 +95,9 @@ jobs:
         with:
           clanged: "y"
           clangedpflags: "y"
-          # clangedPolly: "y"
+          clangedPolly: "y"
           # bootstrap: "y"
-          officialRepo: "y"
+          # officialRepo: "y"
           # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
