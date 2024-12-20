@@ -47,6 +47,7 @@ build() {
 
   export CC=clang CXX=clang++ AR=ar NM=nm
   export V8_FROM_SOURCE=1
+  export RUST_BACKTRACE=1
   export CLANG_BASE_PATH=/usr
   export GN=/usr/bin/gn NINJA=/usr/bin/ninja
   export EXTRA_GN_ARGS="${_extra_gn_args[@]}"
