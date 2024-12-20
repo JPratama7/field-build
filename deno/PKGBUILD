@@ -4,7 +4,7 @@
 pkgname=deno
 pkgver=2.1.4
 pkgrel=1
-_rusty_v8_ver=130.0.2
+_rusty_v8_ver=0.106.0
 pkgdesc="A secure runtime for JavaScript and TypeScript"
 arch=('x86_64')
 url="https://deno.land"
@@ -25,7 +25,7 @@ prepare() {
   git submodule update --init --recursive
 
   # https://github.com/denoland/rusty_v8/issues/1587
-  # patch -Np1 -i ../compiler-rt-adjust-paths.patch
+  patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   cd ../deno
   echo -e "\n[patch.crates-io]\nv8 = { path = '../rusty_v8' }" >> Cargo.toml
