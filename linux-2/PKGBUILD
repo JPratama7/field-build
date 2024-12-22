@@ -360,7 +360,7 @@ prepare() {
 
   msg2 "make ${_compiler_flags} olddefconfig"
   make ${_compiler_flags} olddefconfig
-  diff -u ../config .config || :
+  # diff -u ../config .config || :
 
   if [ "$_makenconfig" = "y" ]; then
     make ${_compiler_flags} nconfig
