@@ -18,7 +18,7 @@ pkgbase=linux-lilium
 _major=6.12
 pkgver=${_major}.6
 _branch=6.x
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux Kernel - Current Stable (CURRENT) with Custom Patches'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -44,6 +44,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "choose-gcc-optimization.sh"
         "config"
 
+        "${_cachy}misc/0001-rt.patch"
         "https://github.com/firelzrd/bore-scheduler/raw/refs/heads/main/patches/stable/linux-$_major-bore/0001-linux$_major.y-bore$_bore.patch"
         
         # Xanmod Feature
@@ -181,19 +182,14 @@ prepare() {
   # Applying configuration
   msg2 "Copy configuration"
   cp ../config .config
-  
-  msg2 "make ${_compiler_flags} olddefconfig"
-  make ${_compiler_flags} olddefconfig
-  #diff -u CONFIGS/xanmod/gcc/${_config} .config || :
 
   # EROFS as module
+  msg2 "Enable EROFS"
   scripts/config --module CONFIG_EROFS_FS
 
   # enable BORE Scheduler + RT
-  scripts/config -e SCHED_BORE \
-                 -d PREEMPT \
-                 -d PREEMPT_DYNAMIC \
-                 -e PREEMPT_RT
+  msg2 "Enabling BORE + RT"
+  scripts/config -e SCHED_BORE -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT
 
   scripts/config  --set-val X86_64_VERSION 1
 
@@ -274,9 +270,6 @@ prepare() {
   msg2 "Enable v4l2loopback support"
   scripts/config -m CONFIG_V4L2_LOOPBACK
 
-  msg2 "Enable WINE FASTSYNC"
-  scripts/config --module WINESYNC
-
   msg2 "Enabling FULLCONENAT..."
   scripts/config --module IP_NF_TARGET_FULLCONENAT \
                  --module NETFILTER_XT_TARGET_FULLCONENAT
@@ -308,19 +301,19 @@ prepare() {
 
 
   msg2 "Enabling all ZRAM backend support..."
-  scripts/config -m CONFIG_ZRAM_BACKEND_LZ4 \
-                 -m CONFIG_ZRAM_BACKEND_LZ4HC \
-                 -m CONFIG_ZRAM_BACKEND_DEFLATE \
-                 -m CONFIG_ZRAM_BACKEND_LZO \
-                 -m CONFIG_ZRAM_BACKEND_ZSTD
+  scripts/config -e CONFIG_ZRAM_BACKEND_LZ4 \
+                 -e CONFIG_ZRAM_BACKEND_LZ4HC \
+                 -e CONFIG_ZRAM_BACKEND_DEFLATE \
+                 -e CONFIG_ZRAM_BACKEND_LZO \
+                 -e CONFIG_ZRAM_BACKEND_ZSTD
 
   msg2 "Disable compression except ZSTD"
-  scripts/config -e ZRAM_DEF_COMP_LZORLE \
-                 -e ZRAM_DEF_COMP_LZO \
-                 -e ZRAM_DEF_COMP_LZ4 \
-                 -e ZRAM_DEF_COMP_LZ4HC \
-                 -e ZRAM_DEF_COMP_DEFLATE \
-                 -e ZRAM_DEF_COMP_842
+  scripts/config -d ZRAM_DEF_COMP_LZORLE \
+                 -d ZRAM_DEF_COMP_LZO \
+                 -d ZRAM_DEF_COMP_LZ4 \
+                 -d ZRAM_DEF_COMP_LZ4HC \
+                 -d ZRAM_DEF_COMP_DEFLATE \
+                 -d ZRAM_DEF_COMP_842
 
   msg2 "Change zram zswap compression to ZSTD"
   scripts/config -e CONFIG_ZRAM_BACKEND_ZSTD \
@@ -364,6 +357,10 @@ prepare() {
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+
+  msg2 "make ${_compiler_flags} olddefconfig"
+  make ${_compiler_flags} olddefconfig
+  diff -u ../config .config || :
 
   if [ "$_makenconfig" = "y" ]; then
     make ${_compiler_flags} nconfig
