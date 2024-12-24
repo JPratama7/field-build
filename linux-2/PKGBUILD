@@ -109,7 +109,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
         "${_lucjan}amd-pstate-patches-v6-all/0001-amd-pstate-patches.patch"
         "${_lucjan}cpu-cachyos-patches-v3/0001-cpu-cachyos-patches.patch"
-        "${_lucjan}zram-patches/0001-zram-6.12-merge-changes-from-dev-tree.patch"
 
         "${_cachy}misc/0001-acpi-call.patch"
         "${_cachy}misc/0001-rt.patch"
