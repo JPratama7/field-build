@@ -112,6 +112,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
 
         "${_cachy}misc/0001-acpi-call.patch"
         "${_cachy}misc/0001-rt.patch"
+        "${_cachy}misc/0001-clang-polly.patch"
 
         "${_tkg}0012-misc-additions.patch"
         )
@@ -199,6 +200,7 @@ prepare() {
     msg2 "Enabling LTO CLANG"
     scripts/config -e LTO \
                    -e LTO_CLANG \
+                   -e POLLY_CLANG \
                    -e ARCH_SUPPORTS_LTO_CLANG \
                    -e ARCH_SUPPORTS_LTO_CLANG_THIN \
                    -d LTO_NONE \
