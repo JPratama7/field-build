@@ -96,7 +96,6 @@ jobs:
           clanged: "y"
           clangedpflags: "y"
           clangedPolly: "y"
-          ldflags: "-Wl,--icf=none"
           # bootstrap: "y"
           # officialRepo: "y"
           # gccPFlags: "y"
@@ -105,7 +104,7 @@ jobs:
           pkgdir:  ${{ matrix.build }}
           cflags: "-Wl,-z,nostart-stop-gc"
           cxxflags: "-Wl,-z,nostart-stop-gc"
-          ldflags: "-Wl,-z,nostart-stop-gc"
+          ldflags: "-Wl,-z,nostart-stop-gc -Wl,--icf=none"
           rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
           # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
