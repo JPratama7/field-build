@@ -4,7 +4,7 @@
 pkgname=deno
 pkgver=2.1.4
 pkgrel=1
-_rusty_v8_ver=0.106.0
+_rusty_v8_ver=130.0.1
 pkgdesc="A secure runtime for JavaScript and TypeScript"
 arch=('x86_64')
 url="https://deno.land"
@@ -15,8 +15,8 @@ makedepends=('git' 'python' 'rust' 'nodejs' 'gn' 'ninja' 'clang' 'lld' 'cmake' '
 source=("git+https://github.com/denoland/deno.git#tag=v$pkgver"
         "git+https://github.com/denoland/rusty_v8.git#tag=v$_rusty_v8_ver"
         "compiler-rt-adjust-paths.patch")
-sha512sums=('cfaf992aa1f2d9506cc2146282e108db3e42d133aef79e95b01246f7199b8c6b539475b579d3292149ff991f4254750e1fa63331b9a99c1e1f4b10f6a5595e2c'
-            'eede72949de3672fdd08e37c067dbd8a8440c5c8f570a3b111d6c355a00a8598e07b40bca005a425265167302678d975d9c66f74644e72ad5ba3bbc1b779766c'
+sha512sums=('7d54d0e8798987997c7e2eded727ed49162b68411741565d9603acec6b3f8e8b855be7a6d3f64bff2a55fe8da4cc4629e3eb228ef8bdbc35382c1b27cb4d665e'
+            '97d293e9aec8b5f36c4d8c09c2cc6bbbe41f8102b5f79d1119758813e16c30371ab664be34334cca6f5dbaa776c0f542a101b706bd19a72db9d0be90a4eb8c13'
             '796dd9dcb44ac65b3a1e47b13219549af3c55598f1ce1493ae5ebed469b3791f977415e4dc8528e5f0f4520398665400411f2ecdf15968aa7e405aadd6fbe125')
 
 prepare() {
@@ -47,8 +47,6 @@ build() {
 
   export CC=clang CXX=clang++ AR=ar NM=nm
   export V8_FROM_SOURCE=1
-  export RUST_BACKTRACE=1
-  export CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true
   export CLANG_BASE_PATH=/usr
   export GN=/usr/bin/gn NINJA=/usr/bin/ninja
   export EXTRA_GN_ARGS="${_extra_gn_args[@]}"
