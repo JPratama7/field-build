@@ -104,7 +104,7 @@ jobs:
           pkgdir:  ${{ matrix.build }}
           cflags: "-Wl,-z,nostart-stop-gc"
           cxxflags: "-Wl,-z,nostart-stop-gc"
-          ldflags: "-Wl,-z,nostart-stop-gc -Wl,--icf=none"
+          ldflags: "-Wl,-z,nostart-stop-gc"
           rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
           # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
