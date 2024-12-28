@@ -98,7 +98,7 @@ jobs:
           # clangedPolly: "y"
           # bootstrap: "y"
           # officialRepo: "y"
-          # maxJobs: 5
+          maxJobs: "5"
           gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
