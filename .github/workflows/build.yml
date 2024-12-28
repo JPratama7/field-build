@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          proton-ge-custom
+          linux-2
           ]
       fail-fast: false
     runs-on: ubuntu-latest

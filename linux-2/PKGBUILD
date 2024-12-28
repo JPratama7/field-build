@@ -16,9 +16,9 @@ fi
 
 pkgbase=linux-lilium
 _major=6.12
-pkgver=${_major}.6
+pkgver=${_major}.7
 _branch=6.x
-pkgrel=6
+pkgrel=1
 pkgdesc='Linux Kernel - Current Stable (CURRENT) with Custom Patches'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -253,6 +253,9 @@ prepare() {
                  -e CONFIG_MODULE_COMPRESS_ALL \
                  -e CONFIG_MODULE_COMPRESS_ZSTD
 
+  msg2 "AMD Private Color"
+  scripts/config -e AMD_PRIVATE_COLOR
+
   msg2 "Change kernel tick rate to 300"
   scripts/config -d HZ_250 -e "HZ_300" --set-val HZ "300";
 
@@ -280,21 +283,6 @@ prepare() {
   msg2 "Enabling KBUILD_CFLAGS -O3..."
   scripts/config -d CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE \
                  -e CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-
-  msg2 "Disabling TCP_CONG_CUBIC..."
-  scripts/config -m TCP_CONG_CUBIC \
-                 -d DEFAULT_CUBIC \
-                 -e TCP_CONG_BBR \
-                 -e DEFAULT_BBR \
-                 --set-str DEFAULT_TCP_CONG bbr \
-                 -m NET_SCH_FQ_CODEL \
-                 -e NET_SCH_FQ \
-                 -d CONFIG_DEFAULT_FQ_CODEL \
-                 -e CONFIG_DEFAULT_FQ
-
-  msg2 "Disabling TCP_CONG_CUBIC..."
-  scripts/config --module CONFIG_TCP_CONG_CUBIC \
-                 -d CONFIG_DEFAULT_CUBIC
 
   msg2 "Enabling multigenerational LRU..."
   scripts/config -e CONFIG_ARCH_HAS_NONLEAF_PMD_YOUNG \
