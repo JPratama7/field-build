@@ -19,6 +19,10 @@ source=("https://github.com/maximumadmin/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('4f9b7d032356c88884a283b68e947a52d8aa1e3450b431403dc22f568234ee60')
 
 build() {
+  echo $CFLAGS
+  echo $CXXFLAGS
+  echo $LDFLAGS
+  
   echo $CGO_CFLAGS
   echo $CGO_CXXFLAGS
   echo $CGO_LDFLAGS
