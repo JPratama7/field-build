@@ -99,7 +99,7 @@ jobs:
           # bootstrap: "y"
           # officialRepo: "y"
           maxJobs: "5"
-          gccPFlags: "y"
+          # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
