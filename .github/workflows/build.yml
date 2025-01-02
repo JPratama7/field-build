@@ -95,16 +95,16 @@ jobs:
         with:
           clanged: "y"
           clangedpflags: "y"
-          clangedPolly: "y"
+          # clangedPolly: "y"
           # bootstrap: "y"
-          # officialRepo: "y"
+          officialRepo: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-Wl,-z,nostart-stop-gc"
-          cxxflags: "-Wl,-z,nostart-stop-gc"
+          cflags: "-fplugin=/usr/lib/LLVMPolly.so -mllvm -polly -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine"
+          cxxflags: "-fplugin=/usr/lib/LLVMPolly.so -mllvm -polly -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine"
           ldflags: "-Wl,-z,nostart-stop-gc"
           rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
