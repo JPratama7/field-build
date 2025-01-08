@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          python312
+          linux-2
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -95,7 +95,7 @@ jobs:
         with:
           clanged: "y"
           clangedpflags: "y"
-          # clangedPolly: "y"
+          clangedPolly: "y"
           # bootstrap: "y"
           officialRepo: "y"
           # maxJobs: "5"
@@ -103,8 +103,8 @@ jobs:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-fplugin=LLVMPolly.so -Xclang -load -Xclang LLVMPolly.so -mllvm -polly -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine"
-          cxxflags: "-fplugin=LLVMPolly.so -Xclang -load -Xclang LLVMPolly.so -mllvm -polly -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine"
+          # cflags: "-fplugin=LLVMPolly.so -Xclang -load -Xclang LLVMPolly.so -mllvm -polly -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine"
+          # cxxflags: "-fplugin=LLVMPolly.so -Xclang -load -Xclang LLVMPolly.so -mllvm -polly -mllvm -polly-ast-use-context -mllvm -polly-vectorizer=stripmine"
           ldflags: "-Wl,-z,nostart-stop-gc"
           # rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
