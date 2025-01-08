@@ -106,7 +106,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}le9uo-default-on-patches-v2/0001-mm-6.12-add-le9uo.patch"
 
         "${_lucjan}crypto-patches-v2-all/0001-crypto-patches.patch"
-        "${_lucjan}clang-patches-v3/0001-clang-patches.patch"
         "${_lucjan}perf-patches-v2-all/0001-perf-patches.patch"
         "${_lucjan}amd-cache-optimizer-patches/0001-amd-cache-optimizer-patches.patch"
         "${_lucjan}amd-pstate-patches-v7/0001-amd-6.12-merge-changes-from-dev-tree.patch"
@@ -114,6 +113,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
 
         "${_cachy}misc/0001-acpi-call.patch"
         "${_cachy}misc/0001-rt.patch"
+        "${_cachy}misc/0001-clang-polly.patch"
+
 
         "${_tkg}0012-misc-additions.patch"
         )
