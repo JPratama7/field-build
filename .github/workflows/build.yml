@@ -34,7 +34,8 @@ jobs:
     strategy:
       matrix:
         build: [
-          linux-2
+          paru, jamesdsp, 
+          wlogout, trizen, swww, sweet-theme-git, swaylock-effects, eww, mission-center,
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -97,7 +98,7 @@ jobs:
           clangedpflags: "y"
           clangedPolly: "y"
           # bootstrap: "y"
-          officialRepo: "y"
+          # officialRepo: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
           namcapDisable: true
