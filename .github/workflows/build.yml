@@ -97,7 +97,7 @@ jobs:
           clanged: "y"
           clangedpflags: "y"
           clangedPolly: "y"
-          # bootstrap: "y"
+          bootstrap: "y"
           # officialRepo: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
