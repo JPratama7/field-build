@@ -81,8 +81,10 @@ build() {
   export CFLAGS="$CFLAGS -Wno-unknown-warning-option -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   export CXXFLAGS="$CXXFLAGS -Wno-unknown-warning-option -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   
-  cflags="$(echo $CFLAGS)"
-  cxxflags="$(echo $CXXFLAGS)"
+  cflags="$(echo $CFLAGS | tr -d \\n)"
+  cxxflags="$(echo $CXXFLAGS | tr -d \\n)"
+  echo $cflags
+  echo $cxxflags
 
   unset CFLAGS
   unset CXXFLAGS
