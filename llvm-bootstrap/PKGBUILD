@@ -96,10 +96,10 @@ build() {
 
   _extra_build_flags+=(
     -DCMAKE_BUILD_TYPE=Release
-    -CMAKE_C_FLAGS='$cflags'
-    -CMAKE_CXX_FLAGS='$cxxflags'
-    -CMAKE_C_COMPILER=gcc
-    -CMAKE_CXX_COMPILER=g++
+    -DCMAKE_C_FLAGS="$cflags"
+    -DCMAKE_CXX_FLAGS="$cxxflags"
+    -DCMAKE_C_COMPILER=gcc
+    -DCMAKE_CXX_COMPILER=g++
     -DCMAKE_INSTALL_PREFIX=/usr
     -DLLVM_BINUTILS_INCDIR=/usr/include
     -DLLVM_BUILD_RUNTIME=ON
