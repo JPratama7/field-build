@@ -103,7 +103,7 @@ jobs:
           pkgdir:  ${{ matrix.build }}
           # cflags: "-mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           # cxxflags: "-mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
-          ldflags: "-Wl,-z,nostart-stop-gc"
+          # ldflags: "-Wl,-z,nostart-stop-gc"
           # rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
           # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
