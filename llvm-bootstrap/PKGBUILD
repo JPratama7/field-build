@@ -77,7 +77,7 @@ prepare() {
   # popd
 
   # Remove CMake find module for zstd; breaks if out of sync with upstream zstd
-  rm cmake/modules/Findzstd.cmake
+  rm llvm/cmake/modules/Findzstd.cmake
 }
 
 build() {
