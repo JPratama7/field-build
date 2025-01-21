@@ -1,7 +1,7 @@
 pkgname=llvm-bootstrap
 pkgdesc="LLVM Toolchain with clang, clang-tools-extra, openmp, compiler-rt, polly, lldb, lld"
 pkgver=19.1.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -75,17 +75,17 @@ prepare() {
   # chmod +x update-isl.sh
   # ./update-isl.sh isl-0.27
   # popd
+
+  # Remove CMake find module for zstd; breaks if out of sync with upstream zstd
+  rm cmake/modules/Findzstd.cmake
 }
 
 build() {
 
-  export CFLAGS="$CFLAGS -Wno-unknown-warning-option -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  export CXXFLAGS="$CXXFLAGS -Wno-unknown-warning-option -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  
-  cflags="$(echo $CFLAGS | tr -d \\n)"
-  cxxflags="$(echo $CXXFLAGS | tr -d \\n)"
-  echo $cflags
-  echo $cxxflags
+  _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-semantic-interposition"
+
+  cflags="$(echo $CFLAGS | tr -d \\n) $_common"
+  cxxflags="$(echo $CXXFLAGS | tr -d \\n) $_common"
 
   unset CFLAGS
   unset CXXFLAGS
@@ -104,7 +104,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DLLVM_BINUTILS_INCDIR=/usr/include
     -DLLVM_BUILD_RUNTIME=ON
-    -DLLVM_ENABLE_BINDINGS=OFF
     -DLLVM_ENABLE_PIC=ON
     -DLLVM_HOST_TRIPLE="${CHOST:?}"
     -DLLVM_ENABLE_CURL=ON
@@ -129,6 +128,10 @@ build() {
     export CXX_LD=lld
     export HOSTLD=ld.lld
     _extra_build_flags+=(-DLLVM_ENABLE_LLD=ON)
+  fi
+
+  if [ $_build_bindings -eq 1 ]; then
+    _extra_build_flags+=(-DLLVM_ENABLE_BINDINGS=ON)
   fi
 
   while true; do
