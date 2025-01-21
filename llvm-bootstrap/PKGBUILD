@@ -87,6 +87,9 @@ build() {
   cflags="$(echo $CFLAGS | tr -d \\n) $_common"
   cxxflags="$(echo $CXXFLAGS | tr -d \\n) $_common"
 
+  cflags="${cflags/-fipa-pta / }"
+  cxxflags="${cxxflags/-fipa-pta / }"
+
   unset CFLAGS
   unset CXXFLAGS
 
