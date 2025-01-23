@@ -1,7 +1,7 @@
 pkgname=llvm-bootstrap
 pkgdesc="LLVM Toolchain with clang, clang-tools-extra, openmp, compiler-rt, polly, lldb, lld"
 pkgver=19.1.7
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -84,11 +84,18 @@ build() {
 
   _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-semantic-interposition"
 
-  cflags="$(echo $CFLAGS | tr -d \\n) $_common"
-  cxxflags="$(echo $CXXFLAGS | tr -d \\n) $_common"
+  _isl="-ftree-loop-linear -floop-strip-mine -floop-block"
+  _tree="-ftree-ter -ftree-lrs -ftree-loop-vectorize -ftree-loop-ivcanon"
+  _smal="-fsched-pressure -fira-hoist-pressure -fira-loop-pressure -fmodulo-sched -fmodulo-sched-allow-regmoves -fipa-icf"
+  _virtual="-fdevirtualize -fdevirtualize-speculatively"
+  _sched="-fselective-scheduling2 -fpeephole2 -fsched-spec -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -ftree-loop-im -freorder-functions -fschedule-insns -fsched2-use-superblocks"
+  _limit="-fipa-strict-aliasing -flimit-function-alignment"
+  _loop="-funswitch-loops -fmove-loop-stores -ftree-partial-pre -fpeel-loops -ftree-loop-if-convert -freschedule-modulo-scheduled-loops -floop-unroll-and-jam -fpredictive-commoning -fsplit-paths  -fgcse-lm -fgcse-sm -fivopts -flive-range-shrinkage -ftree-loop-ivcanon -funswitch-loops -ftree-loop-im -floop-interchange -floop-nest-optimize -ftree-loop-distribution"
+  _flags="-fvect-cost-model=cheap -fsplit-paths -fstdarg-opt -fuse-linker-plugin -ftree-vectorize -fdata-sections -ffunction-sections -mfpmath=sse -fgraphite -fgraphite-identity -fgcse-after-reload"
+  _cxx_flags="-fallocation-dce"
 
-  cflags="${cflags/-fipa-pta / }"
-  cxxflags="${cxxflags/-fipa-pta / }"
+  cflags="$_isl $_tree $_smal $_sched $_limit $_loop $_flags $_common"
+  cxxflags="$_isl $_tree $_smal $_sched $_limit $_loop $_flags $_common $_virtual $_cxx_flags"
 
   export LDFLAGS=${LDFLAGS/-Wl,--as-needed/}
 
