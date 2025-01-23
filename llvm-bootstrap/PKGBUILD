@@ -85,13 +85,13 @@ build() {
   _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-semantic-interposition"
 
   _isl="-ftree-loop-linear -floop-strip-mine -floop-block"
-  _tree="-ftree-ter -ftree-lrs -ftree-loop-vectorize -ftree-loop-ivcanon"
+  _tree="-ftree-ter -ftree-lrs -ftree-loop-vectorize -ftree-loop-ivcanon -ftree-loop-im -ftree-vectorize"
   _smal="-fsched-pressure -fira-hoist-pressure -fira-loop-pressure -fmodulo-sched -fmodulo-sched-allow-regmoves -fipa-icf"
   _virtual="-fdevirtualize -fdevirtualize-speculatively"
-  _sched="-fselective-scheduling2 -fpeephole2 -fsched-spec -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -ftree-loop-im -freorder-functions -fschedule-insns -fsched2-use-superblocks"
+  _sched="-fselective-scheduling -fpeephole -fsched-spec -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fschedule-fusion -freorder-functions -fschedule-insns -fsched2-use-superblocks"
   _limit="-fipa-strict-aliasing -flimit-function-alignment"
-  _loop="-funswitch-loops -fmove-loop-stores -ftree-partial-pre -fpeel-loops -ftree-loop-if-convert -freschedule-modulo-scheduled-loops -floop-unroll-and-jam -fpredictive-commoning -fsplit-paths  -fgcse-lm -fgcse-sm -fivopts -flive-range-shrinkage -ftree-loop-ivcanon -funswitch-loops -ftree-loop-im -floop-interchange -floop-nest-optimize -ftree-loop-distribution"
-  _flags="-fvect-cost-model=cheap -fsplit-paths -fstdarg-opt -fuse-linker-plugin -ftree-vectorize -fdata-sections -ffunction-sections -mfpmath=sse -fgraphite -fgraphite-identity -fgcse-after-reload"
+  _loop="-funswitch-loops -fmove-loop-stores -ftree-partial-pre -fpeel-loops -ftree-loop-if-convert -freschedule-modulo-scheduled-loops -floop-unroll-and-jam -fpredictive-commoning -fsplit-paths  -fgcse-lm -fgcse-sm -fivopts -flive-range-shrinkage -funswitch-loops -floop-interchange -floop-nest-optimize -ftree-loop-distribution"
+  _flags="-fvect-cost-model=cheap -fsplit-paths -ftracer -fstdarg-opt -fuse-linker-plugin -fdata-sections -ffunction-sections -mfpmath=sse -fgraphite -fgraphite-identity -fgcse-after-reload"
   _cxx_flags="-fallocation-dce"
 
   cflags="$_isl $_tree $_smal $_sched $_limit $_loop $_flags $_common"
