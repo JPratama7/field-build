@@ -115,6 +115,8 @@ build() {
   _extra_build_flags+=(
     -DCMAKE_C_FLAGS="$cflags"
     -DCMAKE_CXX_FLAGS="$cxxflags"
+    -DCMAKE_C_COMPILER=gcc
+    -DCMAKE_CXX_COMPILER=g++
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DLLVM_BINUTILS_INCDIR=/usr/include
