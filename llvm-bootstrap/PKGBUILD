@@ -82,7 +82,7 @@ prepare() {
 
 build() {
 
-  _common="-Wno-unknown-warning-option -ffat-lto-objects"
+  _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-plt"
 
   _isl="-ftree-loop-linear -floop-strip-mine -floop-block"
   _tree="-ftree-ter -ftree-lrs -ftree-loop-vectorize -ftree-loop-ivcanon -ftree-loop-im -ftree-vectorize"
@@ -98,6 +98,7 @@ build() {
   cxxflags="$_isl $_tree $_smal $_sched $_limit $_loop $_flags $_common $_virtual $_cxx_flags"
 
   export LDFLAGS=${LDFLAGS/-Wl,--icf=safe/}
+  export LDFLAGS=${LDFLAGS/-Wl,--threads/}
 
   unset CFLAGS
   unset CXXFLAGS
