@@ -101,6 +101,7 @@ build() {
 
   unset CFLAGS
   unset CXXFLAGS
+  unset LDFLAGS
 
   cd "${srcdir:?}/llvm-project" || (
     echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project directory! Build Failed! \E[0m"
@@ -115,6 +116,7 @@ build() {
   _extra_build_flags+=(
     -DCMAKE_C_FLAGS="$cflags"
     -DCMAKE_CXX_FLAGS="$cxxflags"
+    -DCMAKE_LINKER_TYPE=BFD
     -DCMAKE_C_COMPILER=gcc
     -DCMAKE_CXX_COMPILER=g++
     -DCMAKE_BUILD_TYPE=Release
