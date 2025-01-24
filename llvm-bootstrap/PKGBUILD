@@ -82,7 +82,7 @@ prepare() {
 
 build() {
 
-  _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-semantic-interposition"
+  _common="-Wno-unknown-warning-option -ffat-lto-objects"
 
   _isl="-ftree-loop-linear -floop-strip-mine -floop-block"
   _tree="-ftree-ter -ftree-lrs -ftree-loop-vectorize -ftree-loop-ivcanon -ftree-loop-im -ftree-vectorize"
