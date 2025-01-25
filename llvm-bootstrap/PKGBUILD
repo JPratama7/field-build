@@ -82,7 +82,7 @@ prepare() {
 
 build() {
 
-  _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-plt"
+  # _common="-Wno-unknown-warning-option -ffat-lto-objects -fno-plt"
 
   _isl="-ftree-loop-linear -floop-strip-mine -floop-block"
   _tree="-ftree-ter -ftree-lrs -ftree-loop-vectorize -ftree-loop-ivcanon -ftree-loop-im -ftree-vectorize"
@@ -102,6 +102,7 @@ build() {
 
   unset CFLAGS
   unset CXXFLAGS
+  unset LDFLAGS
 
   cd "${srcdir:?}/llvm-project" || (
     echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project directory! Build Failed! \E[0m"
