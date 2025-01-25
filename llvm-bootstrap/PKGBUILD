@@ -1,7 +1,7 @@
 pkgname=llvm-bootstrap
 pkgdesc="LLVM Toolchain with clang, clang-tools-extra, openmp, compiler-rt, polly, lldb, lld"
 pkgver=19.1.7
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -142,13 +142,13 @@ build() {
     -DCOMPILER_RT_INSTALL_PATH=/usr/lib/clang/${pkgver%%.*}
   )
 
-  if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
-    export LD=ld.lld
-    export CC_LD=lld
-    export CXX_LD=lld
-    export HOSTLD=ld.lld
-    _extra_build_flags+=(-DLLVM_ENABLE_LLD=ON)
-  fi
+  # if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
+  #   export LD=ld.lld
+  #   export CC_LD=lld
+  #   export CXX_LD=lld
+  #   export HOSTLD=ld.lld
+  #   _extra_build_flags+=(-DLLVM_ENABLE_LLD=ON)
+  # fi
 
   if [ $_build_bindings -eq 1 ]; then
     _extra_build_flags+=(-DLLVM_ENABLE_BINDINGS=ON)
