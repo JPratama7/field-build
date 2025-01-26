@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          geany-git, paru, jamesdsp
+          paru, eww, mission-center
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -105,7 +105,7 @@ jobs:
           cflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           cxxflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           # ldflags: "-Wl,-z,nostart-stop-gc"
-          rustcflags: "-Cllvm-args=--polly"
+          rustcflags: "-C llvm-args=--load -C llvm-args=LLVMPolly.so -C llvm-args=--polly"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
           # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
