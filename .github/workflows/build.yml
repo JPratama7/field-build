@@ -94,7 +94,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          clangedPFlags: "y"
+          # clangedPFlags: "y"
           officialRepo: "y"
           # gccPflags: "y"
           # maxJobs: "5"
