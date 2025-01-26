@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          llvm-bootstrap
+          geany-git, paru, jamesdsp
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -93,16 +93,17 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
+          clanged: "y"
+          clangedPFlags: "y"
           officialRepo: "y"
-          gccPflags: "y"
-          # officialRepo: "y"
+          # gccPflags: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          # cflags: "-mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
-          # cxxflags: "-mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
+          cflags: "-fplugin=libPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
+          cxxflags: "-fplugin=libPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           # ldflags: "-Wl,-z,nostart-stop-gc"
           # rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
