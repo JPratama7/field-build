@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          paru, eww, mission-center
+          geany-git, paru, jamesdsp, eww, mission-center
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          # clangedPFlags: "y"
+          clangedPFlags: "y"
           officialRepo: "y"
           # gccPflags: "y"
           # maxJobs: "5"
