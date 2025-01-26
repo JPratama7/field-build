@@ -102,8 +102,8 @@ jobs:
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-fplugin=libPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
-          cxxflags: "-fplugin=libPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
+          cflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
+          cxxflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           # ldflags: "-Wl,-z,nostart-stop-gc"
           # rustcflags: "-C link-arg=-z -C link-arg=nostart-stop-gc"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
