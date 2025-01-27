@@ -105,7 +105,7 @@ jobs:
           cflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           cxxflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           ldflags: "-Wl,-mllvm,-load=LLVMPolly.so -Wl,-mllvm,-polly -Wl,-mllvm,-polly-detect-profitability-min-per-loop-insts=40 -Wl,-z,nostart-stop-gc"
-          rustcflags: "-C llvm-args=--load -C llvm-args=LLVMPolly.so -C llvm-args=--polly"
+          # rustcflags: "-C llvm-args=--load -C llvm-args=LLVMPolly.so -C llvm-args=--polly"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
           # cxxflags: "-Xclang -load -Xclang LLVMPolly.so"
           # rustcflags: "-C link-arg=-Wl,-z,nostart-stop-gc"
