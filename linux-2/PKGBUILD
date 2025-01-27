@@ -123,7 +123,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "${_lucjan}x86-patches-sep/0009-x86-document-X86_INTEL_MID-as-64-bit-only.patch"
 
         "${_cachy}misc/0001-acpi-call.patch"
-        "${_cachy}misc/0001-clang-polly.patch"
 
         "${_tkg}0012-misc-additions.patch"
         )
@@ -217,7 +216,6 @@ prepare() {
     msg2 "Enabling LTO CLANG"
     scripts/config -e LTO \
                    -e LTO_CLANG \
-                   -e CONFIG_POLLY_CLANG \
                    -e ARCH_SUPPORTS_LTO_CLANG \
                    -e ARCH_SUPPORTS_LTO_CLANG_THIN \
                    -d LTO_NONE \
