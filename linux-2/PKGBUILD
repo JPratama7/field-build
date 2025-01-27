@@ -216,7 +216,6 @@ prepare() {
     msg2 "Enabling LTO CLANG"
     scripts/config -e LTO \
                    -e LTO_CLANG \
-                   -e CONFIG_POLLY_CLANG \
                    -e ARCH_SUPPORTS_LTO_CLANG \
                    -e ARCH_SUPPORTS_LTO_CLANG_THIN \
                    -d LTO_NONE \
