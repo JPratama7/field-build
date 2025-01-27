@@ -97,7 +97,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "${_lucjan}clang-patches/0001-clang-patches.patch"
 
         "${_cachy}misc/0001-acpi-call.patch"
-        "${_cachy}misc/0001-rt.patch"
 
         "${_tkg}0012-misc-additions.patch"
         )
