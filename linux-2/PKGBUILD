@@ -121,7 +121,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "${_lucjan}x86-patches-sep/0007-x86-drop-SWIOTLB-and-PHYS_ADDR_T_64BIT-for-PAE.patch"
         "${_lucjan}x86-patches-sep/0008-x86-drop-support-for-CONFIG_HIGHPTE.patch"
         "${_lucjan}x86-patches-sep/0009-x86-document-X86_INTEL_MID-as-64-bit-only.patch"
-        "${_lucjan}x86-patches-sep/0010-x86-remove-old-STA2x11-support.patch"
         "${_lucjan}x86-patches-sep/0011-x86-Move-platforms-to-Kconfig.platforms.patch"
 
         "${_cachy}misc/0001-acpi-call.patch"
