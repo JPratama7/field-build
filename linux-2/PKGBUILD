@@ -118,7 +118,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         "${_lucjan}x86-patches-sep/0001-x86-Kconfig-Geode-CPU-has-cmpxchg8b.patch"
         "${_lucjan}x86-patches-sep/0002-x86-drop-32-bit-bigsmp-machine-support.patch"
-        "${_lucjan}x86-patches-sep/0003-x86-rework-CONFIG_GENERIC_CPU-compiler-flags.patch"
         "${_lucjan}x86-patches-sep/0004-x86-drop-configuration-options-for-early-64-bit-CPUs.patch"
         "${_lucjan}x86-patches-sep/0006-x86-remove-HIGHMEM64G-support.patch"
         "${_lucjan}x86-patches-sep/0007-x86-drop-SWIOTLB-and-PHYS_ADDR_T_64BIT-for-PAE.patch"
