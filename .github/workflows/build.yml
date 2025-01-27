@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          geany-git, paru, jamesdsp, eww, mission-center
+          mesa-git, deno-git
           ]
       fail-fast: false
     runs-on: ubuntu-latest
