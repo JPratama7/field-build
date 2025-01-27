@@ -68,7 +68,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "${_xanmod}xanmod/0002-XANMOD-kbuild-Add-GCC-SMS-based-modulo-scheduling-fl.patch"
         "${_xanmod}xanmod/0003-kbuild-Re-add-.config-file-required-to-sign-external.patch"
         "${_xanmod}xanmod/0004-kbuild-Remove-GCC-minimal-function-alignment.patch"
-        "${_xanmod}xanmod/0006-XANMOD-sched-Add-yield_type-sysctl-to-reduce-or-disa.patch"
         "${_xanmod}xanmod/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         "${_xanmod}xanmod/0008-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         "${_xanmod}xanmod/0009-XANMOD-block-Set-rq_affinity-to-force-complete-I-O-r.patch"
