@@ -114,8 +114,18 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "${_lucjan}adios-iosched-patches-v6/0001-iosched-6.13-introduce-ADIOS-I-O-scheduler.patch"
         "${_lucjan}clang-patches/0001-clang-patches.patch"
         "${_lucjan}perf-amd-patches-all/0001-perf-amd-patches.patch"
-        "${_lucjan}x86-patches-all/0001-x86-patches.patch"
         "${_lucjan}itmt-core-ranking-patches-all/0001-itmt-core-ranking-patches.patch"
+
+        "${_lucjan}x86-patches-sep/0001-x86-Kconfig-Geode-CPU-has-cmpxchg8b.patch"
+        "${_lucjan}x86-patches-sep/0002-x86-drop-32-bit-bigsmp-machine-support.patch"
+        "${_lucjan}x86-patches-sep/0003-x86-rework-CONFIG_GENERIC_CPU-compiler-flags.patch"
+        "${_lucjan}x86-patches-sep/0004-x86-drop-configuration-options-for-early-64-bit-CPUs.patch"
+        "${_lucjan}x86-patches-sep/0006-x86-remove-HIGHMEM64G-support.patch"
+        "${_lucjan}x86-patches-sep/0007-x86-drop-SWIOTLB-and-PHYS_ADDR_T_64BIT-for-PAE.patch"
+        "${_lucjan}x86-patches-sep/0008-x86-drop-support-for-CONFIG_HIGHPTE.patch"
+        "${_lucjan}x86-patches-sep/0009-x86-document-X86_INTEL_MID-as-64-bit-only.patch"
+        "${_lucjan}x86-patches-sep/0010-x86-remove-old-STA2x11-support.patch"
+        "${_lucjan}x86-patches-sep/0011-x86-Move-platforms-to-Kconfig.platforms.patch"
 
         "${_cachy}misc/0001-acpi-call.patch"
 
