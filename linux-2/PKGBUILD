@@ -176,9 +176,6 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  msg2 "Applying RT patch"
-  apply_patch "../patch-6.13-rc6-rt3.patch"
-
   # Archlinux patches
   msg2 "Applying Patches"
   local src
