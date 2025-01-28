@@ -106,7 +106,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "${_lucjan}v4l2loopback-patches/0001-media-v4l2-core-add-v4l2loopback-driver.patch"
         "${_lucjan}zstd-cachyos-patches/0001-zstd-cachyos-patches.patch"
         "${_lucjan}mglru-patches-all/0001-mglru-patches.patch"
-        "${_lucjan}le9uo-default-on-patches/0001-mm-6.13-add-le9uo.patch"
 
         "${_lucjan}crypto-patches-all/0001-crypto-patches.patch"
         "${_lucjan}perf-patches-v2-all/0001-perf-patches.patch"
