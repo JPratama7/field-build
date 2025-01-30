@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          linux-2
+          llvm-all
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -96,6 +96,7 @@ jobs:
           clanged: "y"
           clangedPFlags: "y"
           officialRepo: "y"
+          clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # maxJobs: "5"
