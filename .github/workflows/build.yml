@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          llvm-all
+          deno
           ]
       fail-fast: false
     runs-on: ubuntu-latest
