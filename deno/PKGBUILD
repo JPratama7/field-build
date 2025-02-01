@@ -21,6 +21,8 @@ prepare() {
   git config -f .gitmodules submodule.v8.shallow true
   git submodule update --init --recursive
 
+  cargo update --precise 0.335.0 deno_core
+
   # https://github.com/denoland/rusty_v8/issues/1587
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
