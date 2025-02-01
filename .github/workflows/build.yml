@@ -96,7 +96,7 @@ jobs:
           clanged: "y"
           clangedPFlags: "y"
           officialRepo: "y"
-          clangedPolly: "y"
+          # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # maxJobs: "5"
