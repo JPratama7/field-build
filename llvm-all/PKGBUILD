@@ -111,7 +111,7 @@ build() {
       -DFFI_INCLUDE_DIR="$(pkg-config --variable=includedir libffi)"
       -DLLVM_BINUTILS_INCDIR=/usr/include
       -DLLVM_HOST_TRIPLE="${CHOST:?}"
-      -LLVM_STATIC_LINK_CXX_STDLIB=ON
+      -DLLVM_STATIC_LINK_CXX_STDLIB=ON
       -DLLVM_BUILD_LLVM_DYLIB=ON
       -DLLVM_LINK_LLVM_DYLIB=ON
       -DLLVM_INSTALL_UTILS=ON
