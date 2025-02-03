@@ -181,7 +181,7 @@ build() {
 
   cmake -S llvm -B build -G Ninja "${_extra_build_flags[@]}"
 
-  LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/src/llvm-project/build" ninja -C build
+  LD_LIBRARY_PATH="$(PWD)/build:$LD_LIBRARY_PATH:" ninja -C build
 
   if [[ _build_documentation -eq 1 && _build_bindings -ne 0 ]]; then
     ninja -C build ocaml_doc
