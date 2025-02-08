@@ -104,7 +104,7 @@ build() {
 
   export CFLAGS="$CFLAGS -fno-semantic-interposition"
   export CXXFLAGS="$CXXFLAGS -fno-semantic-interposition"
-  unset LDFLAGS
+  export LDFLAGS="-fuse-ld=gold -Wl,-O4 -Wl,--gc-sections -Wl,--as-needed -Wl,-z,relro -Wl,-z,now"
 
     _extra_build_flags+=(
       -DCMAKE_BUILD_TYPE=Release
@@ -135,13 +135,13 @@ build() {
       -DPOLLY_ENABLE_GPGPU_CODEGEN=ON
     )
 
-  if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
-    export LD=ld.lld
-    export CC_LD=lld
-    export CXX_LD=lld
-    export HOSTLD=ld.lld
-    _extra_build_flags+=(-DLLVM_ENABLE_LLD=ON)
-  fi
+  # if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
+  #   export LD=ld.lld
+  #   export CC_LD=lld
+  #   export CXX_LD=lld
+  #   export HOSTLD=ld.lld
+  #   _extra_build_flags+=(-DLLVM_ENABLE_LLD=ON)
+  # fi
 
   while true; do
     case ${_skip_build_test} in
