@@ -50,8 +50,6 @@ options=('staticlibs' '!lto' '!debug')
 _skip_build_test=y
 _skip_documentation=y
 _extra_build_flags=(
-  -DCMAKE_EXE_LINKER_FLAGS=-Wl,--push-state,/usr/lib/libmimalloc.a,--pop-state
-  -DCMAKE_CXX_STANDARD=17 
   -DCMAKE_SKIP_RPATH=ON
   -DENABLE_LINKER_BUILD_ID=ON
 )
@@ -124,6 +122,7 @@ build() {
 
   export CFLAGS="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   export CXXFLAGS="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  unset LDFLAGS
 
   _extra_build_flags+=(
     -DCMAKE_BUILD_TYPE=Release
@@ -143,6 +142,7 @@ build() {
     -DLLVM_ENABLE_PIC=ON
     -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;cross-project-tests;lld;lldb;compiler-rt;polly"
     -DLLVM_ENABLE_RUNTIMES="libcxxabi;pstl;libcxx;openmp"
+    -DLLVM_ENABLE_RPMALLOC=ON
     -DCLANG_LINK_CLANG_DYLIB=ON
     -DCLANG_DEFAULT_PIE_ON_LINUX=ON
     -DLIBCXXABI_USE_LLVM_UNWINDER=OFF
