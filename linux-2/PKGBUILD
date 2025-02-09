@@ -116,7 +116,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}x86-patches-sep/0009-x86-document-X86_INTEL_MID-as-64-bit-only.patch"
 
         "${_cachy}misc/0001-acpi-call.patch"
-
         "${_tkg}0012-misc-additions.patch"
         )
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
