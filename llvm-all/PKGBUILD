@@ -79,20 +79,6 @@ prepare() {
     exit 1
   )
 
-  # Clang
-  pushd clang || {
-    echo -e "\E[1;31mpushd - Package Failed!  \E[0m"
-    exit 1
-  }
-  # Fix hardcoded test path
-  sed -i 's/clang-tools-extra/tools\/extra/g' tools/extra/test/clang-doc/enum.cpp
-  sed -i 's/clang-tools-extra/tools\/extra/g' tools/extra/test/clang-doc/namespace.cpp
-
-  popd || {
-    echo -e "\E[1;31mpopd - Package Failed!  \E[0m"
-    exit 1
-  }
-
   # # MLIR
   # ## /usr/bin/ld: cannot find -lLLVMCodeGenTypes: No such file or directory
   # sed -i 's|LLVM_LINK_COMPONENTS|IGNORE_THAT|g' mlir/tools/mlir-tblgen/CMakeLists.txt
