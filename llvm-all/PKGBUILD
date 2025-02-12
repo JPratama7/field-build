@@ -121,7 +121,6 @@ build() {
 
   export CFLAGS="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   export CXXFLAGS="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  unset LDFLAGS
 
   _extra_build_flags+=(
     -DCMAKE_BUILD_TYPE=Release
@@ -204,7 +203,7 @@ build() {
 
   cmake -S llvm -B build -G Ninja "${_extra_build_flags[@]}"
 
-  LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/src/llvm-project/build" ninja -C build
+  ninja -C build
 
   if [[ _build_documentation -eq 1 && _build_bindings -ne 0 ]]; then
     ninja -C build ocaml_doc
