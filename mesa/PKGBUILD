@@ -128,7 +128,6 @@ build() {
     --sbindir bin \
     --auto-features enabled \
     --wrap-mode nodownload \
-    -D buildtype=release \
     -D debug=false \
     -D optimization=2 \
     -D b_ndebug=true \
