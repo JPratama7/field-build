@@ -1,16 +1,16 @@
 pkgname=mesa
 pkgdesc="Mesa open-source implementation of the OpenGL specification"
-pkgver=24.2.1
+pkgver=25.0.0
 _pkgver=${pkgver//_/-}
 pkgrel=2
 epoch=1
 arch=('x86_64')
 makedepends=(
   'python-mako' 'xorgproto' 'cmake' 'pkgconf' 'directx-headers'
-  'libxml2' 'libx11' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
+  'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
   'wayland-protocols' 'meson' 'ninja' 'glslang' 'python-ply'
   'python-setuptools' 'python-packaging' 'python-yaml' 'clang'
-  'llvm'
+  'llvm' 'libpng' 'cbindgen' 'libclc' 'spirv-tools'
 )
 
 makedepends+=('rust' 'rust-bindgen') # rusticl dependencies
@@ -22,20 +22,23 @@ DLAGENTS=(
 
 depends=(
   'libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf' 'llvm-libs'
-  'systemd' 'systemd-libs' 'xcb-util-keysyms' 'libomxil-bellagio' 
-  'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
-  'spirv-llvm-translator' 'spirv-tools' 'python' 'cbindgen' 'libxcb'
+  'systemd' 'systemd-libs' 'xcb-util-keysyms' 'zlib' 'libx11'
+  'libglvnd' 'wayland' 'lm_sensors' 'vulkan-icd-loader' 'zstd' 'expat'
+  'spirv-llvm-translator' 'python'  'libxcb'
   'libxext' 'libxfixes'
 )
 
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' "mesa=${pkgver}" 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-driver' 'mesa-libgl')
+provides=(
+  'mesa' "mesa=${pkgver}" 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 
+  'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-driver' 'mesa-libgl'
+  )
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast')
 url="https://www.mesa3d.org"
 license=('custom')
 source=(
   "https://archive.mesa3d.org/mesa-${_pkgver}.tar.xz"{,.sig}
-  "https://gitlab.archlinux.org/archlinux/packaging/packages/mesa/-/raw/main/0001-rusticl-do-not-use-CL-vector-types-in-bindings-and-c.patch"
+
 )
 
 sha256sums=('0079beac0a33f45e7e0aec59e6913eafbc4268a3f1e2e330017440494f91b13c'
@@ -80,7 +83,7 @@ done
 
 GALLIUM_DRIVERS="r300,r600,radeonsi,nouveau,virgl,svga,llvmpipe,softpipe,iris,crocus,i915,zink,d3d12"
 VULKAN_DRIVERS="amd,intel,intel_hasvk,nouveau,swrast,virtio"
-VULKAN_LAYERS="device-select,intel-nullhw,overlay"
+VULKAN_LAYERS="device-select,intel-nullhw,overlay,screenshot"
 
 _extra_lto_flag=""
 
@@ -119,7 +122,7 @@ build() {
   # Inject subproject packages
   export MESON_PACKAGE_CACHE_DIR="$srcdir"
 
-  meson mesa-${_pkgver} build-clang \
+  meson setup mesa-${_pkgver} build-clang \
     --prefix /usr \
     --libexecdir lib \
     --sbindir bin \
@@ -140,17 +143,17 @@ build() {
     -D vulkan-drivers="${VULKAN_DRIVERS}" \
     -D vulkan-layers="${VULKAN_LAYERS}" \
     \
-    -D dri3=enabled \
     -D egl=enabled \
     \
     -D gallium-extra-hud=true \
     -D gallium-nine=true \
-    -D gallium-omx=bellagio \
     -D gallium-opencl=icd \
     -D gallium-va=enabled \
     -D gallium-vdpau=enabled \
     -D gallium-xa=enabled \
 	  -D gallium-rusticl=true \
+    -D gallium-d3d12-video=enabled \
+    -D gallium-d3d12-graphics=enabled \
     \
     -D rust_std=2021 \
     -D gbm=enabled \
@@ -173,6 +176,8 @@ build() {
     -D intel-clc=enabled \
     -D intel-rt=enabled \
     -D video-codecs=all \
+    -D amdgpu-virtio=true \
+    -D legacy-x11='dri2'
     \
     -D c_args="$CFLAGS -Wno-format-truncation" \
     -D c_link_args="$LDFLAGS -Wl,--undefined-version" \
@@ -180,7 +185,8 @@ build() {
     -D cpp_link_args="$LDFLAGS -Wl,--undefined-version" \
     --strip
 
-  meson configure build-clang
+
+  arch-meson mesa-$pkgver build-clang "${meson_options[@]}"
 
   meson compile -C build-clang
 
