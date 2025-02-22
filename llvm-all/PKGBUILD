@@ -31,7 +31,7 @@ makedepends=(
   'git' 'ninja' 'cmake' 'clang' 'llvm'
   "ocaml>=${_ocaml_ver}" 'ocaml-ctypes' 'ocaml-findlib'
   'python-setuptools' 'python-psutil' 'python-sphinx'
-  'python-recommonmark' 'ocaml-stdlib-shims' 'mimalloc'
+  'python-myst-parser' 'ocaml-stdlib-shims' 'mimalloc'
 )
 makedepends_x86_64=('lib32-gcc-libs')
 source=(
