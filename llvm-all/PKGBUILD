@@ -121,6 +121,7 @@ build() {
 
   export CFLAGS="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   export CXXFLAGS="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  export LDFLAGS="-fuse-ld=lld $LDFLAGS"
 
   _extra_build_flags+=(
     -DCMAKE_BUILD_TYPE=Release
