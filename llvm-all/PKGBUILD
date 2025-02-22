@@ -152,6 +152,7 @@ build() {
     -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON
     -DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF
     -DPOLLY_ENABLE_GPGPU_CODEGEN=ON
+    -Wno-dev
   )
 
   if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
