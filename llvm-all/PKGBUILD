@@ -119,10 +119,15 @@ build() {
     exit 1
   )
 
-  export CFLAGS="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  export CXXFLAGS="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  
+  unset CFLAGS
+  unset CXXFLAGS
 
   _extra_build_flags+=(
+    -DCMAKE_C_FLAGS="$cflags"
+    -DCMAKE_CXX_FLAGS="$cxxflags"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DFFI_INCLUDE_DIR="$(pkg-config --variable=includedir libffi)"
