@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            llvm-all
+            llvm-all, llvm-runtime
           ]
       fail-fast: false
     runs-on: ubuntu-latest

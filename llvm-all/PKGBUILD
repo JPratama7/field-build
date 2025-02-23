@@ -121,16 +121,14 @@ build() {
 
   export CFLAGS="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   export CXXFLAGS="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  export LDFLAGS="-fuse-ld=lld $LDFLAGS"
+  export LDFLAGS="-fuse-ld= $LDFLAGS"
 
   _extra_build_flags+=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DFFI_INCLUDE_DIR="$(pkg-config --variable=includedir libffi)"
     -DLLVM_BINUTILS_INCDIR=/usr/include
-    -DLLVM_BUILD_RUNTIME=ON
     -DLLVM_HOST_TRIPLE="${CHOST:?}"
-    -DLLVM_STATIC_LINK_CXX_STDLIB=ON
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_INSTALL_UTILS=ON
