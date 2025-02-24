@@ -122,9 +122,11 @@ build() {
 
   cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
   cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  ldflags="$LDFLAGS"
   
   unset CFLAGS
   unset CXXFLAGS
+  unset LDFLAGS
 
   _extra_build_flags+=(
     -DCMAKE_C_FLAGS="$cflags"
