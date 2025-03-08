@@ -120,8 +120,8 @@ build() {
     exit 1
   )
 
-  cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition -fmalloc-dce -freorder-blocks-algorithm='stc' -freschedule-modulo-scheduled-loops -fsplit-loops -fsplit-paths"
+  cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition -fmalloc-dce -freorder-blocks-algorithm='stc' -freschedule-modulo-scheduled-loops -fsplit-loops -fsplit-paths"
   ldflags="$LDFLAGS"
   
   unset CFLAGS
