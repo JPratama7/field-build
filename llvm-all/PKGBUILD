@@ -334,7 +334,7 @@ package() {
     ["libLLVM.so"]="libLLVM.so.19.1"
     ["libLTO.so"]="libLTO.so.19.1"
     ["libomptarget.rtl.amdgpu.so"]="libomptarget.rtl.amdgpu.so.19.1"
-    ["libomptarget.rtl.cuda.so"]="libomptarget.rtl.cuda.so.19.1"
+    ["libomptarget.rtl.cuda.so"]="libomptarget.s.cuda.so.19.1"
     ["libomptarget.rtl.x86_64.so"]="libomptarget.rtl.x86_64.so.19.1"
     ["libomptarget.so"]="libomptarget.so.19.1"
     ["libRemarks.so"]="libRemarks.so.19.1"
