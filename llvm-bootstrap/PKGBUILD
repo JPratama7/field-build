@@ -82,6 +82,12 @@ prepare() {
 
 build() {
 
+  cd "${srcdir:?}/llvm-project" || (
+    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project directory! Build Failed! \E[0m"
+    exit 1
+  )
+
+
   cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition -fallocation-dce -freorder-blocks-algorithm='stc' -freschedule-modulo-scheduled-loops -fsplit-loops -fsplit-paths"
   cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition -fallocation-dce -freorder-blocks-algorithm='stc' -freschedule-modulo-scheduled-loops -fsplit-loops -fsplit-paths"
   ldflags="$LDFLAGS"
@@ -90,42 +96,32 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
-  cd "${srcdir:?}/llvm-project" || (
-    echo -e "\E[1;31mCan't cd to ${srcdir}/llvm-project directory! Build Failed! \E[0m"
-    exit 1
-  )
-
-    # -DCMAKE_C_FLAGS="$cflags"
-    # -DCMAKE_CXX_FLAGS="$cxxflags"
-    # -DCMAKE_C_COMPILER=gcc
-    # -DCMAKE_CXX_COMPILER=g++
-
   _extra_build_flags+=(
     -DCMAKE_C_FLAGS="$cflags"
     -DCMAKE_CXX_FLAGS="$cxxflags"
-    -DCMAKE_LINKER_TYPE=BFD
-    -DCMAKE_C_COMPILER=gcc
-    -DCMAKE_CXX_COMPILER=g++
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DFFI_INCLUDE_DIR="$(pkg-config --variable=includedir libffi)"
     -DLLVM_BINUTILS_INCDIR=/usr/include
-    -DLLVM_BUILD_RUNTIME=ON
-    -DLLVM_HOST_TRIPLE="${CHOST:?}"
-    -DLLVM_ENABLE_CURL=ON
-    -DLLVM_ENABLE_PIC=ON
     -DLLVM_STATIC_LINK_CXX_STDLIB=ON
-    -DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF
+    -DLLVM_HOST_TRIPLE="${CHOST:?}"
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_INSTALL_UTILS=ON
+    -DLLVM_ENABLE_CURL=ON
     -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_FFI=ON
-    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;compiler-rt;polly;openmp"
-    -DLIBOMP_INSTALL_ALIASES=OFF
+    -DLLVM_ENABLE_PIC=ON
+    -DLLVM_USE_PERF=ON
+    -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;lld;compiler-rt;polly;openmp"
     -DCLANG_LINK_CLANG_DYLIB=ON
     -DCLANG_DEFAULT_PIE_ON_LINUX=ON
-    -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON
+    -DLIBOMP_INSTALL_ALIASES=OFF
     -DCOMPILER_RT_INSTALL_PATH=/usr/lib/clang/${pkgver%%.*}
+    -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON
+    -DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF
+    -DPOLLY_ENABLE_GPGPU_CODEGEN=ON
+    -Wno-dev
   )
 
   # if ld.lld --version 2>/dev/null | grep -iq "LLD\s*[0-9]"; then
