@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            qv2ray
+            llvm-bootstrap
           ]
       fail-fast: false
     runs-on: ubuntu-latest
