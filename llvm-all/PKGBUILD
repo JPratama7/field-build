@@ -10,20 +10,19 @@ provides=(
   'llvm' "llvm=${pkgver}" 'llvm-libs' 'llvm-ocaml' 'clang' "clang=${pkgver}"
   'clang-analyzer' 'clang-tools-extra' 'polly' 'compiler-rt' 'openmp'
   'lld' 'lldb' 'libc++' 'libc++abi' 'libc++experimental' 'llvm-bolt'
-  'llvm-offload'
   )
 
 replaces=(
   'llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer'
   'clang-tools-extra' 'polly' 'compiler-rt' 'lld' 'lldb' 'openmp'
-  'libc++' 'libc++abi' 'libc++experimental' 'llvm-bolt' 'llvm-offload'
+  'libc++' 'libc++abi' 'libc++experimental' 'llvm-bolt'
   )
 
 conflicts=(
   'llvm' 'llvm-libs' 'llvm-ocaml' 'clang' 'clang-analyzer'
   'clang-tools-extra' 'polly' 'compiler-rt' 'lld' 'lldb' 'openmp'
   'llvm-git' 'llvm-libs-git' 'llvm-ocaml-git' 'libc++'
-  'libc++abi' 'libc++experimental' 'llvm-bolt' 'llvm-offload'
+  'libc++abi' 'libc++experimental' 'llvm-bolt'
   )
 
 depends=('libelf' 'libffi' 'libedit' 'libxml2' 'ncurses' 'xz' 'zlib' 'gcc-libs')
