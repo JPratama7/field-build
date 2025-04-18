@@ -214,7 +214,7 @@ build() {
     esac
   done
 
-  echo "list $_extra_build_flags"
+  echo "list ${_extra_build_flags[@]}"
 
   cmake -S llvm -B build -G Ninja "${_extra_build_flags[@]}"
 
