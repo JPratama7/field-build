@@ -193,8 +193,6 @@ build() {
     esac
   done
 
-  echo "linker used $LD"
-
   while true; do
     case ${_skip_documentation} in
     [Yy] | "")
@@ -215,6 +213,8 @@ build() {
     *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
     esac
   done
+
+  echo "list $_extra_build_flags"
 
   cmake -S llvm -B build -G Ninja "${_extra_build_flags[@]}"
 
