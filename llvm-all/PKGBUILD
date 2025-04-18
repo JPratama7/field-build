@@ -118,18 +118,7 @@ build() {
     exit 1
   )
 
-  # cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  # cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  # ldflags="$LDFLAGS"
-  # unset CFLAGS
-  # unset CXXFLAGS
-  # unset LDFLAGS
-
-  ls -al /usr/lib/ | grep libLLVM.
-
   _extra_build_flags+=(
-    # -DCMAKE_C_FLAGS="$cflags"
-    # -DCMAKE_CXX_FLAGS="$cxxflags"
     -DCMAKE_SKIP_RPATH=ON
     -DENABLE_LINKER_BUILD_ID=ON
     -DCMAKE_BUILD_TYPE=Release
@@ -161,6 +150,19 @@ build() {
     -Wno-dev
   )
 
+  if ${CC} --version 2>/dev/null | grep -iq "gcc"; then
+      cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+      cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+      ldflags="$LDFLAGS"
+      unset CFLAGS
+      unset CXXFLAGS
+      unset LDFLAGS
+      _extra_build_flags+=(
+        -DCMAKE_C_FLAGS="$cflags"
+        -DCMAKE_CXX_FLAGS="$cxxflags"
+      )
+  fi
+
   if ${LD:-ld} --version 2>/dev/null | grep -iq "LLD[[:space:]]*[0-9]"; then
       export LD=ld.lld
       export CC_LD=lld
@@ -170,10 +172,6 @@ build() {
           -DLLVM_ENABLE_LLD=ON
           -DLLVM_ENABLE_LTO=Thin
       )
-  # else
-  #     _extra_build_flags+=(
-  #         -DLLVM_ENABLE_LTO=Full
-  #     )
   fi
 
   while true; do
