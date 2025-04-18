@@ -118,26 +118,24 @@ build() {
     exit 1
   )
 
-  cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
-  ldflags="$LDFLAGS"
-  
-  unset CFLAGS
-  unset CXXFLAGS
-  unset LDFLAGS
+  # cflags="$CFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  # cxxflags="$CXXFLAGS -fno-plt -fomit-frame-pointer -fno-semantic-interposition"
+  # ldflags="$LDFLAGS"
+  # unset CFLAGS
+  # unset CXXFLAGS
+  # unset LDFLAGS
 
   ls -al /usr/lib/ | grep libLLVM.
 
   _extra_build_flags+=(
-    -DCMAKE_C_FLAGS="$cflags"
-    -DCMAKE_CXX_FLAGS="$cxxflags"
+    # -DCMAKE_C_FLAGS="$cflags"
+    # -DCMAKE_CXX_FLAGS="$cxxflags"
     -DCMAKE_SKIP_RPATH=ON
     -DENABLE_LINKER_BUILD_ID=ON
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DFFI_INCLUDE_DIR="$(pkg-config --variable=includedir libffi)"
     -DLLVM_BINUTILS_INCDIR=/usr/include
-    -DLLVM_STATIC_LINK_CXX_STDLIB=ON
     -DLLVM_HOST_TRIPLE="${CHOST:?}"
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
