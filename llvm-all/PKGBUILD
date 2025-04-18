@@ -127,6 +127,8 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
+  echo "list before add ${_extra_build_flags[@]}"
+
   _extra_build_flags+=(
     -DCMAKE_C_FLAGS="$cflags"
     -DCMAKE_CXX_FLAGS="$cxxflags"
@@ -161,6 +163,9 @@ build() {
     -DPOLLY_ENABLE_GPGPU_CODEGEN=ON
     -Wno-dev
   )
+
+  echo "list after add ${_extra_build_flags[@]}"
+
   
   if ${LD:-ld} --version 2>/dev/null | grep -iq "LLD[[:space:]]*[0-9]"; then
       export LD=ld.lld
@@ -213,8 +218,6 @@ build() {
     *) echo -e "\E[1;31mPlease answer Y or N! \E[0m" ;;
     esac
   done
-
-  echo "list ${_extra_build_flags[@]}"
 
   cmake -S llvm -B build -G Ninja "${_extra_build_flags[@]}"
 
