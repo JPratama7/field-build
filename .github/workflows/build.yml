@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            llvm-bootstrap
+            llvm-all
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -103,6 +103,7 @@ jobs:
           # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
+          customPackages: "llvm-bootstrap"
           pkgdir:  ${{ matrix.build }}
           # cflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
           # cxxflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
