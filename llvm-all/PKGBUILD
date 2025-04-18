@@ -126,7 +126,7 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
-  ls /usr/lib/ | grep libLLVM.
+  ls -al /usr/lib/ | grep libLLVM.
 
   _extra_build_flags+=(
     -DCMAKE_C_FLAGS="$cflags"
