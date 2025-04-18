@@ -98,7 +98,8 @@ jobs:
           # officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
-          gccPflags: "y"
+          # gccPflags: "y"
+          bootstrap: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
           namcapDisable: true
