@@ -34,24 +34,24 @@ jobs:
     strategy:
       matrix:
         build: [
-            llvm-all
+            linux-2
           ]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
-      # - name: Maximize build space
-      #   uses: AdityaGarg8/remove-unwanted-software@v4.1
-      #   with:
-      #     remove-android: 'true'
-      #     remove-dotnet: 'true'
-      #     remove-haskell: 'true'
-      #     remove-cached-tools: 'true'
-      #     remove-large-packages: 'true'
-      #     remove-codeql: 'true'
-      # - name: Build
-      #   run: |
-      #     echo "Free space:"
-      #     df -h
+      - name: Maximize build space
+        uses: AdityaGarg8/remove-unwanted-software@v4.1
+        with:
+          remove-android: 'true'
+          remove-dotnet: 'true'
+          remove-haskell: 'true'
+          remove-cached-tools: 'true'
+          remove-large-packages: 'true'
+          remove-codeql: 'true'
+      - name: Build
+        run: |
+          echo "Free space:"
+          df -h
 
       - name: Clone
         uses: actions/checkout@v3
@@ -66,30 +66,6 @@ jobs:
       #     cat /etc/makepkg.conf
         # with:
         #   repository: JPratama7/arch-builder
-          
-      # - uses: webiny/action-post-run@2.0.1
-      #   id: post-run-command
-      #   with:
-      #     run: cat xf86-video-amdgpu/src/xf86-video-amdgpu-22.0.0/config.log
-      # - run : | 
-      #     git clone https://github.com/pyston/pyston.git
-      #     cd pyston
-      #     git describe --tags
-      #     ls
-        # with:
-        #   submodules: true
-        #   fetch-depth: '50'
-        #   token: ${{ secrets.GITHUB_TOKEN }}
-      # - run: |
-      #     cd ${{ matrix.build }} && sed -i 's/+llvm/llvm-all/g' PKGBUILD
-      # - run: |
-      #     export CFLAGS="${CFLAGS/-O2/-O3}"
-      #     export CFLAGS="${CFLAGS/-march=x86-64/-march=x86-64-v2}"
-      #     export LDFLAGS="${LDFLAGS} -fuse-ld=lld"
-      # - name: remove +clang
-      #   run: |
-      #     cd ${{ matrix.build }} && sed -i 's/+clang//g' PKGBUILD
-      # - run: ls -alR
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
