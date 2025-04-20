@@ -16,7 +16,7 @@ fi
 
 pkgbase=linux-lilium
 _major=6.14
-pkgver=${_major}.2
+pkgver=${_major}.3
 _branch=6.x
 pkgrel=2
 pkgdesc='Linux Kernel - Current Stable (CURRENT) with Custom Patches'
@@ -101,6 +101,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}btrfs-patches/0001-btrfs-patches.patch"
 
         "${_lucjan}crypto-patches-all/0001-crypto-patches.patch"
+        "${_lucjan}le9uo-patches-v3/0001-mm-6.14-add-le9uo.patch"
         "${_lucjan}asus-patches-v2/0001-asus-patches.patch"
         "${_lucjan}amd-drm-patches-all/0001-amd-drm-patches.patch"
         "${_lucjan}amd-pstate-patches-v5-all/0001-amd-pstate-patches.patch"
@@ -282,7 +283,8 @@ prepare() {
   scripts/config -e CONFIG_OVPN_DCO_V2
 
   msg2 "AMD PSTATE"
-  scripts/config  -e CONFIG_X86_AMD_PSTATE
+  scripts/config  -e CONFIG_X86_AMD_PSTATE \
+                  -e CONFIG_X86_AMD_PSTATE_DYNAMIC_EPP
 
   msg2 "Enable v4l2loopback support"
   scripts/config -m CONFIG_V4L2_LOOPBACK
