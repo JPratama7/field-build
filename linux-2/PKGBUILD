@@ -97,7 +97,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
 
         "${_lucjan}kbuild-cachyos-patches/0001-Cachy-Allow-O3.patch"
         "${_lucjan}v4l2loopback-patches/0001-media-v4l2-core-add-v4l2loopback-driver.patch"
-        "${_lucjan}zstd-cachyos-patches/0001-zstd-cachyos-patches.patch"
         "${_lucjan}btrfs-patches/0001-btrfs-patches.patch"
 
         "${_lucjan}crypto-patches-all/0001-crypto-patches.patch"
@@ -109,6 +108,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}fuse-patches-v2/0001-virtiofs-add-filesystem-context-source-name-check.patch"
         "${_lucjan}mm-zblock-patches/0001-mm-add-zblock-allocator.patch"
         "${_lucjan}mm-patches-all/0001-mm-patches.patch"
+        "${_lucjan}zstd-cachyos-patches/0001-zstd-cachyos-patches.patch"
 
         "${_lucjan}x86-patches-sep/0001-x86-Kconfig-Geode-CPU-has-cmpxchg8b.patch"
         "${_lucjan}x86-patches-sep/0006-x86-remove-HIGHMEM64G-support.patch"
