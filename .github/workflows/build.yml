@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            linux-2
+            deno
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -75,7 +75,7 @@ jobs:
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
-          bootstrap: "y"
+          # bootstrap: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
           namcapDisable: true
