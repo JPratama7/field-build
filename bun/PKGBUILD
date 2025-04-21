@@ -131,4 +131,3 @@ package() {
   install -Dm644 bun.bash $pkgdir/usr/share/bash-completion/completions/bun
   install -Dm644 bun.fish $pkgdir/usr/share/fish/vendor_completions.d/bun.fish
 }
-Copyright © 2004-2023 aurweb Development Team – AUR packages are user produced content. Any use of the provided files is at your own risk.
