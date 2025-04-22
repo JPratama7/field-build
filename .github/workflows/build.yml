@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            bun
+            bun-git
           ]
       fail-fast: false
     runs-on: ubuntu-latest
