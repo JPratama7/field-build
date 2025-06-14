@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            linux-2
+            llvm-bootstrap
           ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -71,19 +71,19 @@ jobs:
         with:
           clanged: "y"
           clangedPFlags: "y"
-          # officialRepo: "y"
+          officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
-          bootstrap: "y"
+          # bootstrap: "y"
           # maxJobs: "5"
           # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           # customPackages: "llvm-bootstrap"
           pkgdir:  ${{ matrix.build }}
-          # cflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
-          # cxxflags: "-fplugin=LLVMPolly.so -mllvm -polly -mllvm --polly-omp-backend=LLVM -mllvm --polly-parallel -mllvm --polly-scheduling=static"
+          cflags: "-march=x86-64"
+          cxxflags: "-march=x86-64"
           # ldflags: "-Wl,-mllvm,-load=LLVMPolly.so -Wl,-mllvm,-polly -Wl,-mllvm,-polly-detect-profitability-min-per-loop-insts=40 -Wl,-z,nostart-stop-gc"
           # rustcflags: "-C llvm-args=--load -C llvm-args=LLVMPolly.so -C llvm-args=--polly"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
