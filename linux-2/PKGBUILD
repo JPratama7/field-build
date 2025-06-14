@@ -437,9 +437,6 @@ prepare() {
 
 build() {
   cd linux-${_major}
-
-  make LLVM=1 rustavailable
-
   make ${_compiler_flags} all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
