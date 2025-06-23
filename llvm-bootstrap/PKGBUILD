@@ -8,7 +8,7 @@ license=('custom:Apache 2.0 with LLVM Exception')
 
 provides=('llvm' "llvm=${pkgver}" 'llvm-libs' 'clang' "clang=${pkgver}"
   'clang-analyzer' 'clang-tools-extra' 'polly' 'compiler-rt'
-  'lld' 'openmp'
+  'lld' 'openmp' 'zstd'
 )
 
 replaces=('llvm' 'llvm-libs' 'clang' 'clang-analyzer'
@@ -93,17 +93,14 @@ build() {
     exit 1
   )
 
-
-  # cflags="$CFLAGS -fno-semantic-interposition -fsplit-loops -fsplit-paths"
-  # cxxflags="$CXXFLAGS -fno-semantic-interposition -fsplit-loops -fsplit-paths"
-  # ldflags="$LDFLAGS"
-  
-  # unset CFLAGS
-  # unset CXXFLAGS
+  cflags="$CFLAGS -fno-semantic-interposition -fsplit-loops -fsplit-paths"
+  cxxflags="$CXXFLAGS -fno-semantic-interposition -fsplit-loops -fsplit-paths"
+  unset CFLAGS
+  unset CXXFLAGS
 
   _extra_build_flags+=(
-    # -DCMAKE_C_FLAGS="$cflags"
-    # -DCMAKE_CXX_FLAGS="$cxxflags"
+    -DCMAKE_C_FLAGS="$cflags"
+    -DCMAKE_CXX_FLAGS="$cxxflags"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DFFI_INCLUDE_DIR="$(pkg-config --variable=includedir libffi)"
