@@ -69,15 +69,15 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          # clanged: "y"
-          # clangedPFlags: "y"
-          # officialRepo: "y"
+          clanged: "y"
+          clangedPFlags: "y"
+          officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # bootstrap: "y"
           # maxJobs: "5"
-          gccPFlags: "y"
+          # gccPFlags: "y"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
           # customPackages: "llvm-bootstrap"
