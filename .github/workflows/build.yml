@@ -34,20 +34,20 @@ jobs:
     strategy:
       matrix:
         build: [
-            llvm-bootstrap
+            python312
           ]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v4.1
-        with:
-          remove-android: 'true'
-          remove-dotnet: 'true'
-          remove-haskell: 'true'
-          remove-cached-tools: 'true'
-          remove-large-packages: 'true'
-          remove-codeql: 'true'
+      # - name: Maximize build space
+      #   uses: AdityaGarg8/remove-unwanted-software@v4.1
+      #   with:
+      #     remove-android: 'true'
+      #     remove-dotnet: 'true'
+      #     remove-haskell: 'true'
+      #     remove-cached-tools: 'true'
+      #     remove-large-packages: 'true'
+      #     remove-codeql: 'true'
       - name: Build
         run: |
           echo "Free space:"
@@ -69,12 +69,13 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          # clanged: "y"
-          # clangedPFlags: "y"
-          # officialRepo: "y"
+          clanged: "y"
+          clangedPFlags: "y"
+          officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
-          gccPflags: "y"
+          # gccPflags: "y"
+          chaoticAur: "y"
           # bootstrap: "y"
           # maxJobs: "5"
           namcapDisable: true
