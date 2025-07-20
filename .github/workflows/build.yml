@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-            flameshot-git, rofi-lbonn-wayland-git,
+            flameshot-git, quickshell-git
           ]
       fail-fast: false
     runs-on: ubuntu-latest
