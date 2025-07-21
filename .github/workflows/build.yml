@@ -69,7 +69,7 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          clanged: "y"
+          # clanged: "y"
           # clangedPFlags: "y"
           # officialRepo: "y"
           # clangedPolly: "y"
