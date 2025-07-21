@@ -35,7 +35,7 @@ jobs:
       matrix:
         build: [
           mold-git
-          ]
+        ]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -70,7 +70,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          clangedPFlags: "y
+          clangedPFlags: "y"
           officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
