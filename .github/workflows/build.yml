@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          mold-git
+          caelestia-shell-git
         ]
       fail-fast: false
     runs-on: ubuntu-latest
