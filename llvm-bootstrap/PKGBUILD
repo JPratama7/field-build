@@ -37,7 +37,7 @@ source=(
 sha256sums=('SKIP'
   '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 
-options=('staticlibs' 'lto' '!debug')
+options=('staticlibs' '!lto' '!debug')
 
 _skip_build_test=y
 _skip_documentation=y
