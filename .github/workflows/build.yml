@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          llvm-bootstrap
+          quickshell-git
         ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -69,14 +69,14 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          # clanged: "y"
-          # clangedPFlags: "y"
+          clanged: "y"
+          clangedPFlags: "y"
           # officialRepo: "y"
-          # clangedPolly: "y"
+          clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
-          gccPflags: "y"
-          chaoticAur: "y"
-          # bootstrap: "y"
+          # gccPflags: "y"
+          # chaoticAur: "y"
+          bootstrap: "y"
           # maxJobs: "5"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
