@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          quickshell-git, mimalloc, earlyoom, deno, aria2
+          deno, aria2
         ]
       fail-fast: false
     runs-on: ubuntu-latest
