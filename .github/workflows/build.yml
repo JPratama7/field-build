@@ -77,7 +77,6 @@ jobs:
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # chaoticAur: "y"
-          bootstrap: "y"
           # maxJobs: "5"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
