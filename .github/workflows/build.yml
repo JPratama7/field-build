@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          deno, aria2
+          zed-git
         ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -71,7 +71,8 @@ jobs:
         with:
           clanged: "y"
           clangedPFlags: "y"
-          # officialRepo: "y"
+          bootstrap: "y"
+          chaoticAur: "y"
           clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
