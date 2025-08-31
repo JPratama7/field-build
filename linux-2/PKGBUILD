@@ -100,8 +100,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_xanmod}xanmod/0002-XANMOD-x86-build-Add-LLVM-polyhedral-loop-optimizer-.patch"
         "${_xanmod}xanmod/0003-XANMOD-kbuild-Add-SMS-based-software-pipelining-flag.patch"
         "${_xanmod}xanmod/0004-XANMOD-kbuild-deb-pkg-Create-dbg-when-make-DEB_DEBUG.patch"
-        "${_xanmod}xanmod/0005-kbuild-Re-add-.config-file-required-to-sign-external.patch"
-        "${_xanmod}xanmod/0006-XANMOD-fair-Set-scheduler-tunable-latencies-to-unsca.patch"
         "${_xanmod}xanmod/0007-XANMOD-sched-Add-yield_type-sysctl-to-reduce-or-disa.patch"
 
         "${_cachy}0002-bbr3.patch"
@@ -175,8 +173,6 @@ sha256sums=('d6a5e3c71a10b533a756251387cc8bf48bbd5c76d842ba5e957d8b1c316ab622'
             '6d78089aec27104ac92e254552a90c1110f45817b4c03d311d9ab58d8e47f127'
             '35cc796e751ebc778f51b791ffabd2c6c72642c206eda7fe413479eef8e522d8'
             '51a573a2691d8ac794b4b288de19cb800e431ccad4eda38ce29d13b890c72aa2'
-            'd184d015176b72a862e2c38b596660e5c053eae4faf6897716c6bfa70fa9330f'
-            '0d8bc242800ac1b882cbaf5b5f22ff48095b9624da5d38246b0bb2e76d151934'
             'ee04ade8152e9f19d9714289c545e619083bf2bd34ab68384f656de29c71c11f'
             '54a50fc1160cb0a368ed8101d59377a2940373f61043fdd5cc09a28d49fe4bfa'
             '5498087398dc57e7182657e4f5237d7c5527692fceddd3c394a7dbd1a5b70ab2'
