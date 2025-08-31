@@ -104,8 +104,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_xanmod}xanmod/0006-XANMOD-fair-Set-scheduler-tunable-latencies-to-unsca.patch"
         "${_xanmod}xanmod/0007-XANMOD-sched-Add-yield_type-sysctl-to-reduce-or-disa.patch"
 
-        "${_cachy}0003-bbr3.patch"
-        "${_lucjan}openvpn-dco-patches-v4-all/0001-openvpn-dco-patches.patch"
+        "${_cachy}0002-bbr3.patch"
         "${_lucjan}futex-patches/0001-futex-6.15-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
         "${_lucjan}drm-patches-all/0001-drm-patches.patch"
         "${_lucjan}async-patches/0001-async-patches.patch"
