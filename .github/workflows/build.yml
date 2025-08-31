@@ -70,7 +70,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          # clangedPFlags: "y"
+          clangedPFlags: "y"
           bootstrap: "y"
           chaoticAur: "y"
           # clangedPolly: "y"
