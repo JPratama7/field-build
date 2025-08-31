@@ -114,7 +114,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar
         "${_lucjan}t2-patches-v2/0001-t2-patches.patch"
 
         "${_lucjan}cachyos-fixes-patches-v5/0001-cachyos-fixes-patches.patch"
-        "${_lucjan}cpu-cachyos-patches-all/0001-cpu-cachyos-patches.patch"
+        "${_lucjan}cpu-patches/0001-cpu-6.16-merge-graysky-s-patchset.patch"
         "${_lucjan}cpuidle-patches/0001-cpuidle-Prefer-teo-over-menu-governor.patch"
 
         "${_lucjan}kbuild-cachyos-patches/0001-Cachy-Allow-O3.patch"
