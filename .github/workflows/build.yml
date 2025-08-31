@@ -73,7 +73,7 @@ jobs:
           clangedPFlags: "y"
           bootstrap: "y"
           chaoticAur: "y"
-          clangedPolly: "y"
+          # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # chaoticAur: "y"
