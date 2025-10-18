@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          zed-git
+          Qv2ray
         ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
           clangedPFlags: "y"
           bootstrap: "y"
           chaoticAur: "y"
-          # clangedPolly: "y"
+          clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # chaoticAur: "y"
