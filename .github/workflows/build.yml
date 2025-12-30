@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          qt-sudo
+          python
         ]
       fail-fast: false
     runs-on: ubuntu-latest
