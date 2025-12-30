@@ -70,6 +70,7 @@ build() {
   ./configure ax_cv_c_float_words_bigendian=no \
               --prefix=/usr \
               --enable-shared \
+              --enable-optimizations --with-lto \
               --with-computed-gotos \
               --with-lto \
               --enable-ipv6 \
@@ -77,7 +78,7 @@ build() {
               --with-dbmliborder=gdbm:ndbm \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --enable-experimental-jit=yes-off \
+              --disable-gil \
               --without-ensurepip \
               --with-tzpath=/usr/share/zoneinfo
 
