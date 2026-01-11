@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          python
+          zed-git
         ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -69,13 +69,13 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          clanged: "y"
-          clangedPFlags: "y"
-          bootstrap: "y"
+          # clanged: "y"
+          # clangedPFlags: "y"
+          # bootstrap: "y"
           chaoticAur: "y"
           aurHelper: "yay"
           buildAurHelper: "y"
-          clangedPolly: "y"
+          # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # chaoticAur: "y"
@@ -84,8 +84,8 @@ jobs:
           makepkgArgs: "--skippgpcheck --skipchecksums"
           # customPackages: "llvm-bootstrap"
           pkgdir:  ${{ matrix.build }}
-          cflags: "-march=x86-64"
-          cxxflags: "-march=x86-64"
+          # cflags: "-march=x86-64"
+          # cxxflags: "-march=x86-64"
           # ldflags: "-Wl,-mllvm,-load=LLVMPolly.so -Wl,-mllvm,-polly -Wl,-mllvm,-polly-detect-profitability-min-per-loop-insts=40 -Wl,-z,nostart-stop-gc"
           # rustcflags: "-C llvm-args=--load -C llvm-args=LLVMPolly.so -C llvm-args=--polly"
           # cflags: "-Xclang -load -Xclang LLVMPolly.so"
