@@ -83,6 +83,7 @@ jobs:
           # maxJobs: "5"
           namcapDisable: true
           makepkgArgs: "--skippgpcheck --skipchecksums"
+          extraFlags: "-pthread"
           # customPackages: "llvm-bootstrap"
           pkgdir:  ${{ matrix.build }}
           # cflags: "-march=x86-64"
