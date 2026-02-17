@@ -69,9 +69,9 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          # clanged: "y"
+          clanged: "y"
           # clangedPFlags: "y"
-          # bootstrap: "y"
+          bootstrap: "y"
           chaoticAur: "y"
           aurHelper: "yay"
           buildAurHelper: "y"
