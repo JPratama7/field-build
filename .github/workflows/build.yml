@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          quickshell-git
+          quickshell
         ]
       fail-fast: false
     runs-on: ubuntu-latest
