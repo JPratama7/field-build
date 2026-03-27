@@ -35,8 +35,10 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git"
-  quickshell-check.hook)
+source=(
+    "$_pkgsrc"::"git+$url.git"
+    "quickshell-check.hook::https://aur.archlinux.org/cgit/aur.git/tree/quickshell-check.hook?h=quickshell-git"
+)
 sha256sums=('SKIP'
             '8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083')
 
