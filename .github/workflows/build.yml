@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          quickshell, jamesdsp 
+          flameshot-git, wallust-git, python-materialyoucolor, wf-config
         ]
       fail-fast: false
     runs-on: ubuntu-latest
