@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          quickshell, paru, jamesdsp, zed-git 
+          quickshell, jamesdsp 
         ]
       fail-fast: false
     runs-on: ubuntu-latest
