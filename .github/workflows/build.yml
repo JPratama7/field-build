@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          quickshell, paru, jamesdsp, swww, eww, pfetch, zed-git 
+          quickshell, paru, jamesdsp, zed-git 
         ]
       fail-fast: false
     runs-on: ubuntu-latest
