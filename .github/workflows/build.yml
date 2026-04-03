@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          flameshot-git, wallust-git, python-materialyoucolor, wf-config
+          flameshot-git, wallust-git, python-materialyoucolor, wf-config, quickshell, zed-git
         ]
       fail-fast: false
     runs-on: ubuntu-latest
