@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          wf-config, quickshell, zed-git, jamesdsp, wl-screenrc, wallust-git, flameshot-git
+          llama.cpp
         ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -76,7 +76,7 @@ jobs:
           # aurHelper: "yay"
           # buildAurHelper: "y"
           officialRepo: "y"
-          # clangedPolly: "y"
+          clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # chaoticAur: "y"
