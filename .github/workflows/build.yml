@@ -76,7 +76,7 @@ jobs:
           # aurHelper: "yay"
           # buildAurHelper: "y"
           officialRepo: "y"
-          clangedPolly: "y"
+          # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
           # gccPflags: "y"
           # chaoticAur: "y"
