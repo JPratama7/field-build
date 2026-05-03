@@ -69,16 +69,16 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          clanged: "y"
-          clangedPFlags: "y"
+          # clanged: "y"
+          # clangedPFlags: "y"
           # bootstrap: "y"
           # chaoticAur: "y"
           # aurHelper: "yay"
           # buildAurHelper: "y"
           officialRepo: "y"
-          clangedPolly: "y"
+          # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
-          # gccPflags: "y"
+          gccPflags: "y"
           # chaoticAur: "y"
           # maxJobs: "5"
           namcapDisable: true
