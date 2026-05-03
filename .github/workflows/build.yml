@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          libggml
+          llama.cpp-git
         ]
       fail-fast: false
     runs-on: ubuntu-latest
