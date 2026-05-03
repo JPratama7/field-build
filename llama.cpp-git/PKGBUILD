@@ -1,6 +1,6 @@
 pkgname=llama.cpp-git
 pkgver=b6663.r1.c8dedc999
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ikawrakow/ik_llama.cpp"
@@ -32,7 +32,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DLLAMA_BUILD_TESTS=0 \
     -DGGML_NATIVE=OFF \
-    -DGGML_LTO=ON
+    -DGGML_LTO=ON \
+    -DLLAMA_CURL=ON
 
   cmake --build build --config Release
 }
