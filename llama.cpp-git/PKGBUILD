@@ -31,7 +31,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLAMA_BUILD_TESTS=0 \
-    -DGGML_NATIVE=ON
+    -DGGML_NATIVE=OFF \
+    -DGGML_LTO=ON
 
   cmake --build build --config Release
 }
