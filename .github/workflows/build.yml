@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         build: [
-          zed-git
+          jdk25-jetbrains
         ]
       fail-fast: false
     runs-on: ubuntu-latest
@@ -55,13 +55,13 @@ jobs:
 
       - name: Clone
         uses: actions/checkout@v3
-        # with:
+        with:
           # repository: h0tc0d3/arch-packages
-          # repository: JPratama7/arch-builder
+          repository: JPratama7/arch-builder
           # repository: sarcasticadmin/empty-repo
           # repository: archlinux/svntogit-packages
           # ref: packages/${{ matrix.build }}
-      # - run: 
+      # - run:
       #     pacman -Syu --noconfirm --needed git
       #     cat /etc/makepkg.conf
         # with:
@@ -69,8 +69,8 @@ jobs:
       - id: makepkg
         uses: JPratama7/pkgbuild-action@original
         with:
-          # clanged: "y"
-          # clangedPFlags: "y"
+          clanged: "y"
+          clangedPFlags: "y"
           # bootstrap: "y"
           # chaoticAur: "y"
           aurHelper: "yay"
@@ -78,7 +78,7 @@ jobs:
           officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
-          gccPflags: "y"
+          # gccPflags: "y"
           # chaoticAur: "y"
           # maxJobs: "5"
           namcapDisable: true
@@ -110,7 +110,7 @@ jobs:
           tag: "ok"
           artifacts: "*/*.zst"
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
   # create_db_file:
   #   runs-on: ubuntu-latest
   #   container: archlinux:latest
@@ -142,4 +142,3 @@ jobs:
   #         tag: "latest"
   #         artifacts: "navicat/build/navicat-*"
   #         token: ${{ secrets.GITHUB_TOKEN }}
-
