@@ -70,7 +70,7 @@ jobs:
         uses: JPratama7/pkgbuild-action@original
         with:
           clanged: "y"
-          clangedPFlags: "y"
+          # clangedPFlags: "y"
           # bootstrap: "y"
           # chaoticAur: "y"
           aurHelper: "yay"
@@ -78,7 +78,7 @@ jobs:
           officialRepo: "y"
           # clangedPolly: "y"
           # plugins: "-fplugin=/usr/lib/LLVMPolly.so"
-          #gccPflags: "y"
+          # gccPflags: "y"
           # chaoticAur: "y"
           # maxJobs: "5"
           namcapDisable: true
